@@ -1,1011 +1,197 @@
-% $ biblatex auxiliary file $
-% $ biblatex version 2.5 $
-% Do not modify the above lines!
-%
-% This is an auxiliary file used by the 'biblatex' package.
-% This file may safely be deleted. It will be recreated as
-% required.
-%
-\begingroup
-\makeatletter
-\@ifundefined{ver@biblatex.sty}
-  {\@latex@error
-     {Missing 'biblatex' package}
-     {The bibliography requires the 'biblatex' package.}
-      \aftergroup\endinput}
-  {}
-\endgroup
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
 
-\entry{IFLY}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {{Beijing Universal Pioneering Technology Co., Ltd}}{B.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{B1}
-  \strng{fullhash}{B1}
-  \field{sortinit}{B}
-  \field{title}{iFLYUAS}
-  \verb{url}
-  \verb http://www.iflyuas.com/
-  \endverb
-\endentry
+\bibitem{kumar2012opportunities}
+V.~Kumar and N.~Michael, ``Opportunities and challenges with autonomous micro
+  aerial vehicles,'' \emph{The International Journal of Robotics Research},
+  vol.~31, no.~11, pp. 1279--1291, 2012.
 
-\entry{DLR_Landing}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {DLR}{D.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{D1}
-  \strng{fullhash}{D1}
-  \field{labelyear}{2015}
-  \field{sortinit}{D}
-  \field{title}{Video – autonomous landing at full speed}
-  \verb{url}
-  \verb http://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-10081/151_read-16413
-  \verb /#/gallery/21679
-  \endverb
-  \field{year}{2015}
-\endentry
+\bibitem{williams2004summary}
+K.~W. Williams, ``A summary of unmanned aircraft accident/incident data: Human
+  factors implications,'' 2004.
 
-\entry{farrell1998gps}{article}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Farrell}{F.}%
-     {Jay}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Barth}{B.}%
-     {Matthew}{M.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Galijan}{G.}%
-     {Randy}{R.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sinko}{S.}%
-     {Jim}{J.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{FJ+1}
-  \strng{fullhash}{FJBMGRSJ1}
-  \field{labelyear}{1998}
-  \field{sortinit}{F}
-  \field{title}{GPS/INS based lateral and longitudinal control demonstration:
-  Final report}
-  \field{journaltitle}{California Partners for Advanced Transit and Highways
-  (PATH)}
-  \field{year}{1998}
-\endentry
+\bibitem{manning2004role}
+S.~D. Manning, C.~E. Rash, P.~A. LeDuc, R.~K. Noback, and J.~McKeon, ``The role
+  of human causal factors in us army unmanned aerial vehicle accidents,'' 2004.
 
-\entry{garrattvisual2009}{article}{}
-  \name{author}{5}{}{%
-    {{}%
-     {{Garratt}}{G.}%
-     {{MATT}}{M.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {{POTA}}{P.}%
-     {{HEMANSHU}}{H.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {{LAMBERT}}{L.}%
-     {{ANDREW}}{A.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {{ECKERSLEY‐MASLIN}}{E.}%
-     {{SEBASTIEN}}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {{FARABET}}{F.}%
-     {{CLEMENT}}{C.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{GM+1}
-  \strng{fullhash}{GMPHLAESFC1}
-  \field{labelyear}{2009}
-  \field{sortinit}{G}
-  \field{number}{2}
-  \field{pages}{99\bibrangedash 9110}
-  \field{title}{Visual Tracking and {LIDAR} Relative Positioning for Automated
-  Launch and Recovery of an Unmanned Rotorcraft from Ships at Sea}
-  \field{volume}{121}
-  \field{journaltitle}{Naval Engineers Journal}
-  \field{year}{2009}
-\endentry
+\bibitem{mclean1990automatic}
+D.~McLean, ``Automatic flight control systems(book),'' \emph{Englewood Cliffs,
+  NJ, Prentice Hall, 1990, 606}, 1990.
 
-\entry{Gautam2014}{inproceedings}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Gautam}{G.}%
-     {Alvika}{A.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sujit}{S.}%
-     {P.B.}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Saripalli}{S.}%
-     {Srikanth}{S.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE}%
-  }
-  \strng{namehash}{GA+1}
-  \strng{fullhash}{GASPSS1}
-  \field{labelyear}{2014}
-  \field{sortinit}{G}
-  \field{booktitle}{2014 International Conference on Unmanned Aircraft Systems
-  (ICUAS)}
-  \verb{doi}
-  \verb 10.1109/ICUAS.2014.6842377
-  \endverb
-  \field{isbn}{978-1-4799-2376-2}
-  \field{pages}{1210\bibrangedash 1218}
-  \field{title}{{A survey of autonomous landing techniques for UAVs}}
-  \verb{file}
-  \verb :C$\backslash$:/Users/Kong/Dropbox/11.Paper 2016/151003.1.A Survey of A
-  \verb utonomous Landing Techniques for UAVs.pdf:pdf
-  \endverb
-  \field{year}{2014}
-  \warn{\item Invalid format of field 'month'}
-\endentry
+\bibitem{stevens2003aircraft}
+B.~L. Stevens and F.~L. Lewis, \emph{Aircraft control and simulation}.\hskip
+  1em plus 0.5em minus 0.4em\relax John Wiley \& Sons, 2003.
 
-\entry{Green2004}{inproceedings}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Green}{G.}%
-     {W.E.}{W.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Oh}{O.}%
-     {P.Y.}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Barrows}{B.}%
-     {G.}{G.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE}%
-  }
-  \keyw{SCI1}
-  \strng{namehash}{GW+1}
-  \strng{fullhash}{GWOPBG1}
-  \field{labelyear}{2004}
-  \field{sortinit}{G}
-  \field{booktitle}{IEEE International Conference on Robotics and Automation,
-  2004. Proceedings. ICRA '04. 2004}
-  \verb{doi}
-  \verb 10.1109/ROBOT.2004.1307412
-  \endverb
-  \field{isbn}{0-7803-8232-3}
-  \field{issn}{1050-4729}
-  \field{pages}{2347\bibrangedash 2352 Vol.3}
-  \field{title}{{Flying insect inspired vision for autonomous aerial robot
-  maneuvers in near-earth environments}}
-  \field{volume}{3}
-  \field{year}{2004}
-\endentry
+\bibitem{farrell1998gps}
+J.~Farrell, M.~Barth, R.~Galijan, and J.~Sinko, ``Gps/ins based lateral and
+  longitudinal control demonstration: Final report,'' \emph{California Partners
+  for Advanced Transit and Highways (PATH)}, 1998.
 
-\entry{Guenard2008}{article}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Guenard}{G.}%
-     {Nicolas}{N.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Hamel}{H.}%
-     {Tarek}{T.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Mahony}{M.}%
-     {Robert}{R.}%
-     {}{}%
-     {}{}}%
-  }
-  \keyw{Aerial robotic vehicle,Experiments,Image-based visual servo
-  (IBVS),Underactuated system}
-  \strng{namehash}{GN+1}
-  \strng{fullhash}{GNHTMR1}
-  \field{labelyear}{2008}
-  \field{sortinit}{G}
-  \verb{doi}
-  \verb 10.1109/TRO.2008.916666
-  \endverb
-  \field{isbn}{1050-4729 VO -}
-  \field{issn}{15523098}
-  \field{number}{2}
-  \field{pages}{331\bibrangedash 340}
-  \field{title}{{A practical visual servo control for an unmanned aerial
-  vehicle}}
-  \field{volume}{24}
-  \field{journaltitle}{IEEE Transactions on Robotics}
-  \field{year}{2008}
-\endentry
+\bibitem{RUAG}
+\BIBentryALTinterwordspacing
+RUAG, ``Opats,'' 2015. [Online]. Available: \url{https://www.ruag.com}
+\BIBentrySTDinterwordspacing
 
-\entry{Kim2013}{article}{}
-  \name{author}{10}{}{%
-    {{}%
-     {Kim}{K.}%
-     {H.~Jin}{H.~J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Kim}{K.}%
-     {Mingu}{M.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Lim}{L.}%
-     {Hyon}{H.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Park}{P.}%
-     {Chulwoo}{C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Yoon}{Y.}%
-     {Seungho}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Lee}{L.}%
-     {Daewon}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Choi}{C.}%
-     {Hyunjin}{H.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Oh}{O.}%
-     {Gyeongtaek}{G.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Park}{P.}%
-     {Jongho}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Kim}{K.}%
-     {Youdan}{Y.}%
-     {}{}%
-     {}{}}%
-  }
-  \keyw{Net-recovery,unmanned aerial vehicle,vision-based landing}
-  \strng{namehash}{KHJ+1}
-  \strng{fullhash}{KHJKMLHPCYSLDCHOGPJKY1}
-  \field{labelyear}{2013}
-  \field{sortinit}{K}
-  \verb{doi}
-  \verb 10.1109/TMECH.2013.2247411
-  \endverb
-  \field{isbn}{1083-4435}
-  \field{issn}{10834435}
-  \field{number}{4}
-  \field{pages}{1320\bibrangedash 1333}
-  \field{title}{{Fully autonomous vision-based net-recovery landing system for
-  a fixed-wing UAV}}
-  \field{volume}{18}
-  \field{journaltitle}{IEEE/ASME Transactions on Mechatronics}
-  \field{year}{2013}
-\endentry
+\bibitem{SierraNevadaCorporation}
+\BIBentryALTinterwordspacing
+{Sierra Nevada}, ``Dual-thread automatic takeoff and landing system,'' 2015.
+  [Online]. Available: \url{http://www.sncorp.com}
+\BIBentrySTDinterwordspacing
 
-\entry{kong2014vision}{inproceedings}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Kong}{K.}%
-     {Weiwei}{W.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Zhou}{Z.}%
-     {Dianle}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Zhang}{Z.}%
-     {Daibing}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Zhang}{Z.}%
-     {Jianwei}{J.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{organization}{1}{%
-    {IEEE}%
-  }
-  \strng{namehash}{KW+1}
-  \strng{fullhash}{KWZDZDZJ1}
-  \field{labelyear}{2014}
-  \field{sortinit}{K}
-  \field{booktitle}{Multisensor Fusion and Information Integration for
-  Intelligent Systems (MFI), 2014 International Conference on}
-  \field{pages}{1\bibrangedash 8}
-  \field{title}{Vision-based autonomous landing system for unmanned aerial
-  vehicle: A survey}
-  \field{year}{2014}
-\endentry
+\bibitem{SierraNevadaCorporationa}
+\BIBentryALTinterwordspacing
+------, ``Ucars-v2,'' 2015. [Online]. Available: \url{http://www.sncorp.com}
+\BIBentrySTDinterwordspacing
 
-\entry{kumar2012opportunities}{article}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Kumar}{K.}%
-     {Vijay}{V.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Michael}{M.}%
-     {Nathan}{N.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {SAGE Publications}%
-  }
-  \strng{namehash}{KVMN1}
-  \strng{fullhash}{KVMN1}
-  \field{labelyear}{2012}
-  \field{sortinit}{K}
-  \field{number}{11}
-  \field{pages}{1279\bibrangedash 1291}
-  \field{title}{Opportunities and challenges with autonomous micro aerial
-  vehicles}
-  \field{volume}{31}
-  \field{journaltitle}{The International Journal of Robotics Research}
-  \field{year}{2012}
-\endentry
+\bibitem{Nolan2010}
+M.~S. Nolan, ``{Air Traffic Control},'' 2010.
 
-\entry{manning2004role}{article}{}
-  \name{author}{5}{}{%
-    {{}%
-     {Manning}{M.}%
-     {Sharon~D}{S.~D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Rash}{R.}%
-     {Clarence~E}{C.~E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {LeDuc}{L.}%
-     {Patricia~A}{P.~A.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Noback}{N.}%
-     {Robert~K}{R.~K.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {McKeon}{M.}%
-     {Joseph}{J.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{MSD+1}
-  \strng{fullhash}{MSDRCELPANRKMJ1}
-  \field{labelyear}{2004}
-  \field{sortinit}{M}
-  \field{title}{The role of human causal factors in US Army unmanned aerial
-  vehicle accidents}
-  \list{institution}{1}{%
-    {DTIC Document}%
-  }
-  \field{year}{2004}
-\endentry
+\bibitem{Guenard2008}
+N.~Guenard, T.~Hamel, and R.~Mahony, ``{A practical visual servo control for an
+  unmanned aerial vehicle},'' \emph{IEEE Transactions on Robotics}, vol.~24,
+  no.~2, pp. 331--340, 2008.
 
-\entry{Martinez2009a}{inproceedings}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Martinez}{M.}%
-     {Carol}{C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Campoy}{C.}%
-     {Pascual}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Mondragon}{M.}%
-     {Ivan}{I.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Olivares-Mendez}{O.-M.}%
-     {Miguel~A.}{M.~A.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE}%
-  }
-  \strng{namehash}{MC+1}
-  \strng{fullhash}{MCCPMIOMMA1}
-  \field{labelyear}{2009}
-  \field{sortinit}{M}
-  \field{booktitle}{2009 IEEE/RSJ International Conference on Intelligent
-  Robots and Systems}
-  \verb{doi}
-  \verb 10.1109/IROS.2009.5354489
-  \endverb
-  \field{isbn}{978-1-4244-3803-7}
-  \field{pages}{3361\bibrangedash 3367}
-  \field{title}{{Trinocular ground system to control UAVs}}
-  \verb{file}
-  \verb :g$\backslash$:/iLab\_Frank/Study/04.Vision and SLAM/08.Landing/140903.
-  \verb 21.Trinocular Ground System to Control UAVs.pdf:pdf
-  \endverb
-  \field{month}{10}
-  \field{year}{2009}
-\endentry
+\bibitem{Mejias2006}
+L.~Mej{\'{\i}}as, S.~Saripalli, P.~Campoy, and G.~S. Sukhatme, ``{Visual
+  servoing of an autonomous helicopter in urban areas using feature
+  tracking},'' \emph{Journal of Field Robotics}, vol.~23, no. 3-4, pp.
+  185--199, 2006.
 
-\entry{mclean1990automatic}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {McLean}{M.}%
-     {Donald}{D.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{MD1}
-  \strng{fullhash}{MD1}
-  \field{labelyear}{1990}
-  \field{sortinit}{M}
-  \field{title}{Automatic flight control systems(Book)}
-  \field{journaltitle}{Englewood Cliffs, NJ, Prentice Hall, 1990, 606}
-  \field{year}{1990}
-\endentry
+\bibitem{Green2004}
+W.~Green, P.~Oh, and G.~Barrows, ``{Flying insect inspired vision for
+  autonomous aerial robot maneuvers in near-earth environments},'' in
+  \emph{IEEE International Conference on Robotics and Automation, 2004.
+  Proceedings. ICRA '04. 2004}, vol.~3.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2004, pp. 2347--2352 Vol.3.
 
-\entry{Mejias2006}{article}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Mej{\'{\i}}as}{M.}%
-     {Luis}{L.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Saripalli}{S.}%
-     {Srikanth}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Campoy}{C.}%
-     {Pascual}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sukhatme}{S.}%
-     {Gaurav~S.}{G.~S.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{ML+1}
-  \strng{fullhash}{MLSSCPSGS1}
-  \field{labelyear}{2006}
-  \field{sortinit}{M}
-  \verb{doi}
-  \verb 10.1002/rob.20115
-  \endverb
-  \field{issn}{1556-4959}
-  \field{number}{3-4}
-  \field{pages}{185\bibrangedash 199}
-  \field{title}{{Visual servoing of an autonomous helicopter in urban areas
-  using feature tracking}}
-  \field{volume}{23}
-  \verb{file}
-  \verb :C$\backslash$:/Users/Kong/Dropbox/11.Paper 2016/160219.1.Visual Servoi
-  \verb ng of an Autonomous Helicopter in Urban Areas Feature Tracking.pdf:pdf
-  \endverb
-  \field{journaltitle}{Journal of Field Robotics}
-  \field{year}{2006}
-\endentry
+\bibitem{Ruffier2014}
+F.~Ruffier and N.~Franceschini, ``{Optic Flow Regulation in Unsteady
+  Environments: A Tethered MAV Achieves Terrain Following and Targeted Landing
+  Over a Moving Platform},'' pp. 275--293, aug 2014.
 
-\entry{Nolan2010}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Nolan}{N.}%
-     {Michael~S.}{M.~S.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {Cengage Learning}%
-  }
-  \strng{namehash}{NMS1}
-  \strng{fullhash}{NMS1}
-  \field{labelyear}{2010}
-  \field{sortinit}{N}
-  \field{edition}{5th Edition}
-  \field{isbn}{978-1435482722}
-  \field{title}{{Air Traffic Control}}
-  \field{year}{2010}
-\endentry
+\bibitem{Vlantis2015}
+P.~Vlantis, P.~Marantos, C.~P. Bechlioulis, and K.~J. Kyriakopoulos,
+  ``{Quadrotor landing on an inclined platform of a moving ground vehicle},''
+  \emph{Proceedings of the International Conference on Robotics and
+  Automation}, pp. 2202--2207, 2015.
 
-\entry{pebrianti2010autonomous}{article}{}
-  \name{author}{5}{}{%
-    {{}%
-     {Pebrianti}{P.}%
-     {Dwi}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Kendoul}{K.}%
-     {Farid}{F.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Azrad}{A.}%
-     {Syaril}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Wang}{W.}%
-     {Wei}{W.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Nonami}{N.}%
-     {Kenzo}{K.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{PD+1}
-  \strng{fullhash}{PDKFASWWNK1}
-  \field{labelyear}{2010}
-  \field{sortinit}{P}
-  \field{number}{2}
-  \field{pages}{269\bibrangedash 284}
-  \field{title}{Autonomous hovering and landing of a quad-rotor micro aerial
-  vehicle by means of on ground stereo vision system}
-  \field{volume}{4}
-  \field{journaltitle}{Journal of System Design and Dynamics}
-  \field{year}{2010}
-\endentry
+\bibitem{Kim2013}
+H.~J. Kim, M.~Kim, H.~Lim, C.~Park, S.~Yoon, D.~Lee, H.~Choi, G.~Oh, J.~Park,
+  and Y.~Kim, ``{Fully autonomous vision-based net-recovery landing system for
+  a fixed-wing UAV},'' \emph{IEEE/ASME Transactions on Mechatronics}, vol.~18,
+  no.~4, pp. 1320--1333, 2013.
 
-\entry{richardsonautomated2013}{article}{}
-  \name{author}{7}{}{%
-    {{}%
-     {Richardson}{R.}%
-     {Thomas~S.}{T.~S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Jones}{J.}%
-     {Chris~G.}{C.~G.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Likhoded}{L.}%
-     {Alexey}{A.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sparks}{S.}%
-     {Ed}{E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Jordan}{J.}%
-     {Andrew}{A.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Cowling}{C.}%
-     {Ian}{I.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Willcox}{W.}%
-     {Simon}{S.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {wiley}%
-  }
-  \strng{namehash}{RTS+1}
-  \strng{fullhash}{RTSJCGLASEJACIWS1}
-  \field{labelyear}{2013}
-  \field{sortinit}{R}
-  \verb{doi}
-  \verb 10.1002/rob.21467
-  \endverb
-  \field{number}{5}
-  \field{pages}{667\bibrangedash 684}
-  \field{title}{Automated Vision‐based Recovery of a Rotary Wing Unmanned
-  Aerial Vehicle onto a Moving Platform}
-  \field{volume}{30}
-  \field{journaltitle}{Journal of Field Robotics}
-  \field{year}{2013}
-\endentry
+\bibitem{Sharp2001}
+C.~S. Sharp, O.~Shakernia, and S.~S. Sastry, ``{A Vision System for Landing an
+  Unmanned Aerial Vehicle (ICRA)},'' \emph{Proc IEEE Int Conf Robot Autom}, pp.
+  1720--1727, 2001.
 
-\entry{RUAG}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {RUAG}{R.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{R1}
-  \strng{fullhash}{R1}
-  \field{labelyear}{2015}
-  \field{sortinit}{R}
-  \field{title}{OPATS}
-  \verb{url}
-  \verb https://www.ruag.com
-  \endverb
-  \field{year}{2015}
-\endentry
+\bibitem{Shakernia2002}
+O.~Shakernia, R.~Vidal, C.~Sharp, Y.~Ma, and S.~Sastry, ``{Multiple view motion
+  estimation and control for landing an unmanned aerial vehicle},'' in
+  \emph{Proceedings 2002 IEEE International Conference on Robotics and
+  Automation}, vol.~3, no. May.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2002, pp. 2793--2798.
 
-\entry{Ruffier2014}{misc}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Ruffier}{R.}%
-     {Franck}{F.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Franceschini}{F.}%
-     {Nicolas}{N.}%
-     {}{}%
-     {}{}}%
-  }
-  \keyw{Aerial Robot,Biomimetics,Decking,Honeybees,MAV,Optic flow,SCI1,Unmanned
-  aerial systems,Unsteady environments}
-  \strng{namehash}{RFFN1}
-  \strng{fullhash}{RFFN1}
-  \field{labelyear}{2014}
-  \field{sortinit}{R}
-  \field{booktitle}{Journal of Intelligent {\&} Robotic Systems}
-  \verb{doi}
-  \verb 10.1007/s10846-014-0062-5
-  \endverb
-  \field{isbn}{1084601400}
-  \field{issn}{09210296}
-  \field{number}{2}
-  \field{pages}{275\bibrangedash 293}
-  \field{title}{{Optic Flow Regulation in Unsteady Environments: A Tethered MAV
-  Achieves Terrain Following and Targeted Landing Over a Moving Platform}}
-  \field{volume}{79}
-  \field{year}{2014}
-  \warn{\item Invalid format of field 'month'}
-\endentry
+\bibitem{Saripalli2003}
+S.~Saripalli, J.~Montgomery, and G.~Sukhatme, ``{Visually guided landing of an
+  unmanned aerial vehicle},'' \emph{IEEE Transactions on Robotics and
+  Automation}, vol.~19, no.~3, pp. 371--380, jun 2003.
 
-\entry{Saripalli2003}{article}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Saripalli}{S.}%
-     {Srikanth}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Montgomery}{M.}%
-     {J.F.}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sukhatme}{S.}%
-     {G.S.}{G.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE}%
-  }
-  \keyw{SCI1}
-  \strng{namehash}{SS+1}
-  \strng{fullhash}{SSMJSG1}
-  \field{labelyear}{2003}
-  \field{sortinit}{S}
-  \verb{doi}
-  \verb 10.1109/TRA.2003.810239
-  \endverb
-  \field{isbn}{0-7803-7272-7}
-  \field{issn}{1042-296X}
-  \field{number}{3}
-  \field{pages}{371\bibrangedash 380}
-  \field{title}{{Visually guided landing of an unmanned aerial vehicle}}
-  \field{volume}{19}
-  \field{journaltitle}{IEEE Transactions on Robotics and Automation}
-  \field{year}{2003}
-  \warn{\item Invalid format of field 'month'}
-\endentry
+\bibitem{richardsonautomated2013}
+T.~S. Richardson, C.~G. Jones, A.~Likhoded, E.~Sparks, A.~Jordan, I.~Cowling,
+  and S.~Willcox, ``Automated vision‐based recovery of a rotary wing unmanned
+  aerial vehicle onto a moving platform,'' \emph{Journal of Field Robotics},
+  vol.~30, no.~5, pp. 667--684, 2013.
 
-\entry{Shakernia2002}{inproceedings}{}
-  \name{author}{5}{}{%
-    {{}%
-     {Shakernia}{S.}%
-     {O.}{O.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Vidal}{V.}%
-     {R.}{R.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sharp}{S.}%
-     {C.S.}{C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Ma}{M.}%
-     {Y.}{Y.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sastry}{S.}%
-     {S.}{S.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE}%
-  }
-  \strng{namehash}{SO+1}
-  \strng{fullhash}{SOVRSCMYSS1}
-  \field{labelyear}{2002}
-  \field{sortinit}{S}
-  \field{booktitle}{Proceedings 2002 IEEE International Conference on Robotics
-  and Automation}
-  \verb{doi}
-  \verb 10.1109/ROBOT.2002.1013655
-  \endverb
-  \field{isbn}{0-7803-7272-7}
-  \field{number}{May}
-  \field{pages}{2793\bibrangedash 2798}
-  \field{title}{{Multiple view motion estimation and control for landing an
-  unmanned aerial vehicle}}
-  \field{volume}{3}
-  \field{year}{2002}
-\endentry
+\bibitem{DLR_Landing}
+\BIBentryALTinterwordspacing
+DLR, ``Video – autonomous landing at full speed,'' 2015. [Online]. Available:
+  \url{http://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-10081/151_read-16413/#/gallery/21679}
+\BIBentrySTDinterwordspacing
 
-\entry{Sharp2001}{article}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Sharp}{S.}%
-     {C~S}{C.~S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Shakernia}{S.}%
-     {O}{O}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Sastry}{S.}%
-     {S~S}{S.~S.}%
-     {}{}%
-     {}{}}%
-  }
-  \keyw{SCI1}
-  \strng{namehash}{SCS+1}
-  \strng{fullhash}{SCSSOSSS1}
-  \field{labelyear}{2001}
-  \field{sortinit}{S}
-  \verb{doi}
-  \verb 10.1109/ROBOT.2001.932859
-  \endverb
-  \field{isbn}{0780364759}
-  \field{issn}{1050-4729}
-  \field{pages}{1720\bibrangedash 1727}
-  \field{title}{{A Vision System for Landing an Unmanned Aerial Vehicle
-  (ICRA)}}
-  \field{journaltitle}{Proc IEEE Int Conf Robot Autom}
-  \field{year}{2001}
-\endentry
+\bibitem{garrattvisual2009}
+M.~{Garratt}, H.~{POTA}, A.~{LAMBERT}, S.~{ECKERSLEY‐MASLIN}, and
+  C.~{FARABET}, ``Visual tracking and {LIDAR} relative positioning for
+  automated launch and recovery of an unmanned rotorcraft from ships at sea,''
+  \emph{Naval Engineers Journal}, vol. 121, no.~2, pp. 99--9110, 2009.
 
-\entry{SierraNevadaCorporation}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {{Sierra Nevada}}{S.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{S1}
-  \strng{fullhash}{S1}
-  \field{labelyear}{2015}
-  \field{extrayear}{1}
-  \field{sortinit}{S}
-  \field{title}{Dual-Thread Automatic Takeoff and Landing System}
-  \verb{url}
-  \verb http://www.sncorp.com
-  \endverb
-  \field{year}{2015}
-\endentry
+\bibitem{Wang2006}
+W.~Wang, G.~Song, K.~Nonami, M.~Hirata, and O.~Miyazawa, ``{Autonomous Control
+  for Micro-Flying Robot and Small Wireless Helicopter X.R.B},'' in
+  \emph{IEEE/RSJ International Conference on Intelligent Robots and
+  Systems}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, Oct. 2006, pp.
+  2906--2911.
 
-\entry{SierraNevadaCorporationa}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {{Sierra Nevada}}{S.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{S1}
-  \strng{fullhash}{S1}
-  \field{labelyear}{2015}
-  \field{extrayear}{2}
-  \field{sortinit}{S}
-  \field{title}{UCARS-V2}
-  \verb{url}
-  \verb http://www.sncorp.com
-  \endverb
-  \field{year}{2015}
-\endentry
+\bibitem{pebrianti2010autonomous}
+D.~Pebrianti, F.~Kendoul, S.~Azrad, W.~Wang, and K.~Nonami, ``Autonomous
+  hovering and landing of a quad-rotor micro aerial vehicle by means of on
+  ground stereo vision system,'' \emph{Journal of System Design and Dynamics},
+  vol.~4, no.~2, pp. 269--284, 2010.
 
-\entry{stevens2003aircraft}{book}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Stevens}{S.}%
-     {Brian~L}{B.~L.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Lewis}{L.}%
-     {Frank~L}{F.~L.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {John Wiley \& Sons}%
-  }
-  \strng{namehash}{SBLLFL1}
-  \strng{fullhash}{SBLLFL1}
-  \field{labelyear}{2003}
-  \field{sortinit}{S}
-  \field{title}{Aircraft control and simulation}
-  \field{year}{2003}
-\endentry
+\bibitem{Martinez2009a}
+C.~Martinez, P.~Campoy, I.~Mondragon, and M.~A. Olivares-Mendez, ``{Trinocular
+  ground system to control UAVs},'' in \emph{2009 IEEE/RSJ International
+  Conference on Intelligent Robots and Systems}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, Oct. 2009, pp. 3361--3367.
 
-\entry{Vlantis2015}{article}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Vlantis}{V.}%
-     {Panagiotis}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Marantos}{M.}%
-     {Panos}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Bechlioulis}{B.}%
-     {Charalampos~P.}{C.~P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Kyriakopoulos}{K.}%
-     {Kostas~J.}{K.~J.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{VP+1}
-  \strng{fullhash}{VPMPBCPKKJ1}
-  \field{labelyear}{2015}
-  \field{sortinit}{V}
-  \verb{doi}
-  \verb 10.1109/ICRA.2015.7139490
-  \endverb
-  \field{isbn}{9781479969234}
-  \field{pages}{2202\bibrangedash 2207}
-  \field{title}{{Quadrotor landing on an inclined platform of a moving ground
-  vehicle}}
-  \field{journaltitle}{Proceedings of the International Conference on Robotics
-  and Automation}
-  \field{year}{2015}
-\endentry
+\bibitem{kong2014vision}
+W.~Kong, D.~Zhou, D.~Zhang, and J.~Zhang, ``Vision-based autonomous landing
+  system for unmanned aerial vehicle: A survey,'' in \emph{Multisensor Fusion
+  and Information Integration for Intelligent Systems (MFI), 2014 International
+  Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 1--8.
 
-\entry{Wang2006}{inproceedings}{}
-  \name{author}{5}{}{%
-    {{}%
-     {Wang}{W.}%
-     {Wei}{W.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Song}{S.}%
-     {Gang}{G.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Nonami}{N.}%
-     {Kenzou}{K.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Hirata}{H.}%
-     {Mitsuo}{M.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Miyazawa}{M.}%
-     {Osamu}{O.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE}%
-  }
-  \strng{namehash}{WW+1}
-  \strng{fullhash}{WWSGNKHMMO1}
-  \field{labelyear}{2006}
-  \field{sortinit}{W}
-  \field{booktitle}{IEEE/RSJ International Conference on Intelligent Robots and
-  Systems}
-  \verb{doi}
-  \verb 10.1109/IROS.2006.282142
-  \endverb
-  \field{isbn}{1-4244-0258-1}
-  \field{pages}{2906\bibrangedash 2911}
-  \field{title}{{Autonomous Control for Micro-Flying Robot and Small Wireless
-  Helicopter X.R.B}}
-  \verb{file}
-  \verb :g$\backslash$:/iLab\_Frank/Study/04.Vision and SLAM/08.Landing/140903.
-  \verb 32.Autonomous Control for Micro-Flying Robot and Small Wireless Helicop
-  \verb ter X.R.B.pdf:pdf
-  \endverb
-  \field{month}{10}
-  \field{year}{2006}
-\endentry
+\bibitem{Gautam2014}
+A.~Gautam, P.~Sujit, and S.~Saripalli, ``{A survey of autonomous landing
+  techniques for UAVs},'' in \emph{2014 International Conference on Unmanned
+  Aircraft Systems (ICUAS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, may
+  2014, pp. 1210--1218.
 
-\entry{williams2004summary}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Williams}{W.}%
-     {Kevin~W}{K.~W.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{WKW1}
-  \strng{fullhash}{WKW1}
-  \field{labelyear}{2004}
-  \field{sortinit}{W}
-  \field{title}{A summary of unmanned aircraft accident/incident data: Human
-  factors implications}
-  \list{institution}{1}{%
-    {DTIC Document}%
-  }
-  \field{year}{2004}
-\endentry
+\bibitem{betser2004automatic}
+A.~Betser, P.~Vela, and A.~Tannenbaum, ``Automatic tracking of flying vehicles
+  using geodesic snakes and kalman filtering,'' in \emph{Decision and Control,
+  2004. CDC. 43rd IEEE Conference on}, vol.~2.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2004, pp. 1649--1654.
 
-\lossort
-\endlossort
+\bibitem{sattigeri2007vision}
+R.~J. Sattigeri, E.~N. Johnson, A.~J. Calise, and J.-C. Ha, ``Vision-based
+  target tracking with adaptive target state estimator,'' 2007.
 
-\endinput
+\bibitem{blake1998active}
+A.~Blake, M.~Isard, \emph{et~al.}, \emph{Active contours}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Springer London, 1998, vol.~1.
+
+\bibitem{368173}
+R.~Malladi, J.~Sethian, and B.~Vemuri, ``Shape modeling with front propagation:
+  a level set approach,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
+  Transactions on}, vol.~17, no.~2, pp. 158--175, 1995.
+
+\bibitem{Caselles1993}
+V.~Caselles, F.~Catte, T.~Coll, and F.~Dibos, ``A geometric model for active
+  contours in image processing,'' \emph{Numerische Mathematik}, vol.~66, no.~1,
+  pp. 1--31, Dec 1993.
+
+\bibitem{IFLY}
+\BIBentryALTinterwordspacing
+{Beijing Universal Pioneering Technology Co., Ltd}, ``iflyuas.'' [Online].
+  Available: \url{http://www.iflyuas.com/}
+\BIBentrySTDinterwordspacing
+
+\end{thebibliography}

@@ -1,10 +1,17 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
-The style file: biblatex.bst
-Database file #1: template-blx.bib
-Database file #2: template.bib
-Repeated entry---line 429 of file template.bib
+The style file: IEEEtran.bst
+Database file #1: template.bib
+Repeated entry---line 480 of file template.bib
  : @inproceedings{Wang2006
  :                        ,
 I'm skipping whatever remains of this entry
-Biblatex version: 3.0
+-- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in williams2004summary
+Warning--empty journal in manning2004role
+Warning--empty journal in Nolan2010
+Warning--empty journal in sattigeri2007vision
+
+Done.
 (There was 1 error message)
