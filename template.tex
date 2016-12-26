@@ -102,7 +102,7 @@
 
 \begin{document}
 \date{}
-\title{Ground Stereo-Vision-in-Loop Guidance for Safe Landing of Fixed-wing UAVs: Architecture \& Algorithms}
+\title{Real-time Ground Stereo-Vision-in-Loop Localization System for Safe Landing of Fixed-wing UAVs}
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
 %\titlerunning{Short form of title}        % if too long for running head
@@ -130,7 +130,7 @@
 \maketitle
 
 \begin{abstract}
-Orchestrating a safe landing is one of the greatest challenges for aircraft. This paper aims to deal with the problem of automatically landing a Unmanned Aircraft Vehicle (UAV) in the field with the help of a ground-based stereo visual system. This novel visual system consists of two separate perception modules which equipped with a pan/tilt unit (PTU) and optical sensors. Benefiting from the large baseline and extended field of view (FOV), our system could locate the aircraft precisely by triangular geometry during the final landing approaching in GNSS-denied or -impaired environments. To track the target at long distance, the Semi-random-code TLD algorithm (SRC-TLD) and Bounding Box Shrinking (BBS) algorithm were designed to improve the location accuracy. We provide the results from both simulation and practical experiments, showing the performance of the novel system and the overall accuracy during the landing process. In addition, this autonomous landing system caters for all of the different UAV system in operation, such as fixed-wing and rotary wing. 
+Orchestrating a safe landing is one of the greatest challenges for Unmanned Aircraft Vehicles (UAVs). This paper aims to deal with the autonomous localization and landing  problem with the help of a ground-based stereo visual system. This novel visual system consists of two separate perception modules which equipped with a pan/tilt unit (PTU) and optical sensors. Benefiting from the large baseline and extended field of view (FOV), our system could locate the aircraft precisely by triangular geometry during the final landing approaching in GNSS-denied or -impaired environments. To track the target at long distance, the Semi-random-code TLD algorithm (SRC-TLD) in series with Bounding Box Shrinking (BBS) algorithm was designed to improve the location accuracy. We provide the results from both simulation and practical experiments, showing the performance of the novel system and the overall accuracy during the landing process. In addition, this autonomous landing system caters for all of the different UAV system in operation, such as fixed-wing and rotary wing. 
 
 %These two modules setup at the each side of the runway and benefiting from the large baseline and extended field of view (FOV), the aircraft could be tracked at $1\ km$ in distance. The position of the UAV could be calculated by triangular geometry. We provide the results from both simulation and practical experiments, showing the performance of the novel system and the overall accuracy during the landing process. Our approach offer increased accuracy in measuring aircraft position in GNSS-denied scenario when compare to human operation. 
  
@@ -165,9 +165,9 @@ Visual based approach is an obvious way to achieve the autonomous landing by est
 
 Motivated by these pressing problems, we introduce a novel ground-based visual landing system. Unless the existing ground-based guidance system that has limited baseline, our proposed approach sets up the camera on a pan-tilt unit (PTU) to increase the effective field of view (FOV) of cameras and the distance at which a reliable lock could be established and maintained. The general view of the fresh guidance system is shown in Figure \ref{fig:Fig04_GeneralSystem}. The key contributions of this papers is threefold:
 \begin{itemize}
-	\item First, we introduce a novel ground-based guidance system with large baseline and 360° circular coverage, eliminating the dependency of GNSS.
-	\item Second, we designed real-time SRC-TLD and BBS tracking and localization framework to guide the aircraft landing safely. 
-	\item Third, the whole system has been tested using a fixed-wing aircraft with an appropriate landing strategy.
+	\item First, we introduced a novel ground-based guidance system with large baseline and 360° circular coverage, eliminating the dependency of GNSS.
+	\item Second, we designed SRC-TLD and BBS algorithms fusing with PTU operation status to improve the localization precision and yield real-time capability.
+	\item Third, the whole system has been tested using a fixed-wing aircraft in the filed with an appropriate safely landing strategy.
 \end{itemize}
 
 
@@ -216,7 +216,7 @@ For cooperative localization some structured landing mark, such as 2D barcodes, 
 % TODO 有效探测距离
 
 % Laser  & Visual
-The combination of laser and visual system also has a long history in this field. In 2009, Garratt \cite{garrattvisual2009} considered a relatively low-cost guidance system through visual tracking and LIDAR positioning for autonomous recovery of a Yamaha R-max rotorcraft from ships at sea. This onboard visual system identifies and tracks the single beacon to determine both the distance and the orientation of the deck. Because the wavelength of the beacon is 650 nm, the craft can track it in bright sunlight. For the laser system, the laser rangefinder at a wavelength of 780 nm assembling with a spinning mirror was mounted at the bottom of the rotorcraft, which scans a conical pattern on the deck for estimating the position. The error of position estimation is better than 2 cm in practice, but the detection distance is only 100 m due to the size and the power of the selected LED. 
+The combination of laser and visual system also has a long history in this field. In 2009, Garratt \cite{garrattvisual2009} considered a relatively low-cost guidance system through visual tracking and LIDAR positioning for autonomous recovery of a Yamaha R-max rotorcraft from ships at sea. This onboard visual system identifies and tracks the single beacon to determine both the distance and the orientation of the deck. Because the wavelength of the beacon is $650\ nm$, the craft can track it in bright sunlight. For the laser system, the laser rangefinder at a wavelength of $780\ nm$ assembling with a spinning mirror was mounted at the bottom of the rotorcraft, which scans a conical pattern on the deck for estimating the position. The error of position estimation is better than $2\ cm$ in practice, but the detection distance is only $100\ m$ due to the size and the power of the selected LED. 
 
 %While there is significant work using electro-optical pod, laser scanner and radar, those methods require more hardware for the aircraft to carry; therefore, in this case, we focus just on ground-based visual case, which is a lighter weight solution for UAV.
 % Because laser-based system are in most cases emit radiation and are therefore likely to reveal the aircraft location to hostile forces.
@@ -225,7 +225,7 @@ While several techniques have been applied for on-board vision-based control of 
 
 In addtion, Martinez \cite{Martinez2009a} introduced a trinocular on-ground system, which is composed by three or more cameras for extracting key features of UAV in order to obtain robust 3D position estimation. The range of detection is still not sufficient for fixed-wing UAV. And another drawback of multi-camera system is the calibration process, whose parameters are nontrivial to obtain. Moreover, we also reviewed various vision-based landing approaches performing on different platform \cite{kong2014vision} and Gautam etc. provide another general review of the autonomous landing techniques for UAVs \cite{Gautam2014}.
 
- 
+Our group first developed the traditional stereo ground-based system with infrared cameras \cite{kong2013autonomous} while this system has limited detection distance. To enhance the operating capability, we conducted the triangular geometry localization method to the PTU-based system and discussed the error analysis in detail \cite{kong2014ground}. According to the previous work, the localization accuracy largely depends on the aircraft detection precision in the camera image plane. So we implemented Chan-Vese method \cite{tang2016ground} and Saliency-inspired method \cite{ma2016stereo} to detect and track the vehicle more accurately, however, these approaches are not suitable for real-time requirements.
 
 \section{Ground-based Stereo Localization System Architechture}
 In this section, we introduce the theoretical model for ground-to-air visual system. We first recap the traditional stereo vision model which has limited base line restrainting the detection distance. To enlarge the system working boundary, we setup the camera and other sensor module on the two separated PTU and then calculate the target according the image information and rotation angle from PTU.
@@ -243,17 +243,19 @@ The standard camera model is pin-hole camera Mode. The coordinate of the target 
 	z 
 	\end{array}} \right]
 \end{equation}
-where $\lambda$ is the scale factor. When using eudilar coordinate, we could get
-\begin{equation}
-\left[ {\begin{array}{*{20}{c}}
-	u \\ 
-	v 
-	\end{array}} \right] =\frac{f}{z} \left[ {\begin{array}{*{20}{c}}
-	x \\ 
-	y   
-	\end{array}} \right]
-\end{equation}
+where $\lambda$ is the scale factor. 
 
+%When using eudilar coordinate, we could get
+%\begin{equation}
+%\left[ {\begin{array}{*{20}{c}}
+%	u \\ 
+%	v 
+%	\end{array}} \right] =\frac{f}{z} \left[ {\begin{array}{*{20}{c}}
+%	x \\ 
+%	y   
+%	\end{array}} \right]
+%\end{equation}
+%
 %Assuming the camera focus $f$ and the image size $(w_u,w_v)$ is known, the horizontal FOV of camera $\alpha_{FOV}$ can be calculated by
 %\begin{equation}
 %\tan{\frac{\alpha_{FOV}}{2}}=\frac{w_u}{f}
@@ -266,8 +268,7 @@ where $\lambda$ is the scale factor. When using eudilar coordinate, we could get
 
 Although the above model is simple, it could be helpful to estimate the theoretical camera lens according the expected distance and resolution or to measure the target size roughly based on the pixel length on image plane. Let the width and height of the target be $W$ and $H$, the distance between the camera and target be $L$, the target projection on image plane be $w$ and $h$, the relationship between them is  
 \begin{align}
-f=\frac{wL}{W} \\
-f=\frac{hL}{H}
+f=\frac{wL}{W} \qquad f=\frac{hL}{H}
 \end{align}
 
 When the optical axes of these two cameras are parallel, we could calculate the target in 3D space by
@@ -481,9 +482,7 @@ b_l = \cos \phi_l \cos \psi_l\\
 c_l = \sin \phi_l
 \end{array} 
 \right.
-\end{equation}
-
-\begin{equation} 
+\qquad
 \left\{ 
 \begin{array}{lll} 
 a_r = \cos \phi_r \sin \psi_r\\
@@ -492,6 +491,16 @@ c_r = \sin \phi_r
 \end{array} 
 \right.
 \end{equation}
+
+%\begin{equation} 
+%\left\{ 
+%\begin{array}{lll} 
+%a_r = \cos \phi_r \sin \psi_r\\
+%b_r = \cos \phi_r \cos \psi_r\\
+%c_r = \sin \phi_r
+%\end{array} 
+%\right.
+%\end{equation}
 where $t_l$, $t_r$ are the parameters for the line $O_lM$ and $O_rM$ separately.
 So any point $(x, y, z)$ on each line are usually written parametrically as a function of $t_l$ and $t_r$:
 \begin{equation}  
@@ -502,17 +511,25 @@ So any point $(x, y, z)$ on each line are usually written parametrically as a fu
 		z_l = c_l t_l + z_{ol}
 	\end{array} 
 	\right.
-\end{equation}
-
-\begin{equation}  
-	\left\{ 
+	\qquad
+		\left\{ 
 	\begin{array}{lll} 
-		x_r = a_r l_r + x_{or} \\
-		y_r = b_r t_r + y_{or} \\
-		z_r = c_r t_r + z_{or}
+	x_r = a_r l_r + x_{or} \\
+	y_r = b_r t_r + y_{or} \\
+	z_r = c_r t_r + z_{or}
 	\end{array} 
 	\right.
 \end{equation}
+
+%\begin{equation}  
+%	\left\{ 
+%	\begin{array}{lll} 
+%		x_r = a_r l_r + x_{or} \\
+%		y_r = b_r t_r + y_{or} \\
+%		z_r = c_r t_r + z_{or}
+%	\end{array} 
+%	\right.
+%\end{equation}
 
 (2) In our situation, $O_lM$ and $O_rM$ are skew lines that these two lines to not be parallel and to not intersect in 3D. Generally, the shortest distance between the two skew lines lies along the line which is perpendicular to both of them. By defining the intersection points of the shortest segment line for each line by $(x_{lp}, y_{lp}, z_{lp}$ and $(x_{rp}, y_{rp}, z_{rp}$, we get the parametric equations
 \begin{equation}  
@@ -523,16 +540,24 @@ So any point $(x, y, z)$ on each line are usually written parametrically as a fu
 		z_{lp} = c_l t_l + z_{ol}
 	\end{array} 
 	\right.
-\end{equation}
-\begin{equation}  
-	\left\{ 
+	\qquad
+		\left\{ 
 	\begin{array}{lll} 
-		x_{rp} = a_r l_r + x_{or} \\
-		y_{rp} = b_r t_r + y_{or} \\
-		z_{rp} = c_r t_r + z_{or}
+	x_{rp} = a_r l_r + x_{or} \\
+	y_{rp} = b_r t_r + y_{or} \\
+	z_{rp} = c_r t_r + z_{or}
 	\end{array} 
 	\right.
 \end{equation}
+%\begin{equation}  
+%	\left\{ 
+%	\begin{array}{lll} 
+%		x_{rp} = a_r l_r + x_{or} \\
+%		y_{rp} = b_r t_r + y_{or} \\
+%		z_{rp} = c_r t_r + z_{or}
+%	\end{array} 
+%	\right.
+%\end{equation}
 
 
 (3) Knowing the position of the intersection points on each line, the distance is calculated by the square Euclidean norm 
@@ -630,7 +655,7 @@ Further, the optimal point to present point $M$ is the center point of the verti
 \end{flalign}
 
 
-The angle between the UAV landing trajectory and the runway area is usually between $5 \degree$ and $7 \degree$. By considering 1 rad normal distributed disturbance (the accuracy of the PTU is $0.006 \degree$), Fig. \ref{fig:Fig06_ErrorSurf2000} illustrates measurement errors of $x_M$, $y_M$ and $z_M$ in case of different points $(x,y) \in S$, where $S= \{ (x,y)| -50 \leq x \leq 50, 20 \leq y \leq 1000 \}$. Obviously, the errors at a considerable  distance are notable, but the incidence of them decline while the aircraft is close to the runway. When the UAV is only 100 m to the landing area, the error of altitude  is about 0.02 m that is dependable for the landing task. 
+The angle between the UAV landing trajectory and the runway area is usually between $5 \degree$ and $7 \degree$. By considering 1 rad normal distributed disturbance (the accuracy of the PTU is $0.006 \degree$), Fig. \ref{fig:Fig06_ErrorSurf2000} illustrates measurement errors of $x_M$, $y_M$ and $z_M$ in case of different points $(x,y) \in S$, where $S= \{ (x,y)| -50 \leq x \leq 50, 20 \leq y \leq 1000 \}$. Obviously, the errors at a considerable  distance are notable, but the incidence of them decline while the aircraft is close to the runway. When the UAV is only 100 m to the landing area, the error of altitude  is about 0.02 m that is dependable for the landing task. For more detail error analysis please refer our purevious work \cite{kong2014ground}.
 
 \begin{figure*}[!th]
 	\centering
@@ -734,7 +759,7 @@ The overall architecture of the separated stereo system and its connections and 
 
 \begin{figure}[!tb]
 	\centering
-	\includegraphics[width=\textwidth]{Figs/SystemStructure2.pdf}
+	\includegraphics[width=0.8\textwidth]{Figs/SystemStructure2.pdf}
 	\caption{Architecture of the system.}
 	\label{fig:SystemStructure}
 \end{figure}
@@ -747,7 +772,7 @@ To keep the camera on the PTU pointing to the target closely, we designed a   vi
 
 \begin{figure*}[!th]
 	\centering
-	\includegraphics[width=0.9\textwidth]{Figs/sci01_tracking_framework2.pdf}	
+	\includegraphics[width=0.8\textwidth]{Figs/sci01_tracking_framework2.pdf}	
 	\caption{PTU-based UAV Tracking Framework}
 	\label{fig:sci01_tracking_framework}
 \end{figure*}
@@ -798,8 +823,7 @@ the function $ \phi(x,y) $ depends on the given image and is used as a ``stoppin
 
 \section{Experiments and Discussion}
 \subsection{UAV Platform}
-In our on-board system we can see three components: The autopilot design allowed for the aircraft to perform simple commanded maneuver. The aircraft was flying at 60 m altitude at 25 m/s. This experimental test-bed is also a customized fixed wing aircraft as shown in Fig. \ref{fig:Kaitudozhe_VIGA}. It is a gasoline-powered radio-controlled model aircraft approximately 2.3 m in length and capable of lifting approximately 5 kg of payload. Table \ref{tab:platform_specifications} lists the other technical specifications.
-
+This experimental test-bed is  a customized fixed wing aircraft as shown in Fig. \ref{fig:Kaitudozhe_VIGA}, which is a gasoline-powered radio-controlled model aircraft. The on-board autopilot allowed for the aircraft to perform simple commanded maneuver. Our autopilot module is iFLY-F1A (Fig. \ref{fig:iFly_F1A} and the navigation module is iFLY-G2 (Fig. \ref{fig:iFly_G2} \cite{IFLY}, which is a small six-DOF (degree of freedom) navigation system. This module supports real-time 3D information including attitude angle, angular rate, position, speed, acceleration, true air speed, calibrated air speed. F1A is connected with G2 through RS-232 serial port. Table \ref{tab:platform_specifications} lists the other technical specifications of the UAV platform.
 
 \begin{figure}[!tb]
 	\centering
@@ -842,16 +866,7 @@ In our on-board system we can see three components: The autopilot design allowed
 	\end{center}
 \end{table}
 
-
-The autopilot module is iFLY-F1A (Fig. \ref{fig:iFly_F1A}. It consists of the F1A autopilot system, a ground control station, a redundant power management module and an engine RPM monitoring module. We further make use of the iFLY-G2 (Fig. \ref{fig:iFly_G2} navigation autopilot module \cite{IFLY}, which is a small six-DOF (degree of freedom) navigation system. The G2 module includes a triaxial gyro, triaxial accelerometer, triaxial magnetometer, GNSS module, barometric altimeter, airspeed gauge and thermometer. It supports real-time 3D information including attitude angle, angular rate, position, speed, acceleration, true air speed, calibrated air speed. F1A is connected with G2 through RS-232 serial port.
-
-
-
 Communication is curcial in the landing guidance framework, because the relative localization is broadcast through the radio. The guidance data are sent using an advanced radio modem that transmits and receives on the $900\ Mhz$ band. The XTend RF Modems support up to $22\ km$ outdoor communication with the interface data rates from $10\ bps$ to $230,00\ bps$, which is sufficient to transfer GNSS data and predicted position from ground station to on-board navigation modem.
-
- 
-
-
 
 \subsection{SRC-TLD Experiments}
 To compare with the standard TLD method, the stability of Semi-random Code method was estimated for each frame by means of running 1000 Monte-Carlo experiments in one landing image sequence. Tabel \ref{lab:TLD_params} lists the parameters for TLD and SRC-TLD and the result is shown as \ref{fig:chp04_24_random_semi_random_monte_carlo}. The line shows the center location error for each algorithm, and the continuous shaded area is the error region, which explicate that the SRC has better stability and the accuracy of center location is improved. 
@@ -863,10 +878,10 @@ To compare with the standard TLD method, the stability of Semi-random Code metho
 	\begin{tabular}{cc}
 		\hline
 		& \textbf{Parameters} \\ \hline
-		Min/Max Scale & 10 \\
-		Features Number & 10 \\
-		Trees Number & 15 \\
-		Learning Ratio & 0.8 \\ \hline
+		 \textbf{Min/Max Scale} & 10 \\
+		 \textbf{Features Number} & 8 \\
+		 \textbf{Trees Number} & 15 \\
+		 \textbf{Learning Ratio} & 0.8 \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -877,27 +892,49 @@ To compare with the standard TLD method, the stability of Semi-random Code metho
 	\label{fig:chp04_24_random_semi_random_monte_carlo}    
 \end{figure}
 
+\begin{figure}[!th]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figs/chp04_05_landing_data_1_left_Contour.pdf}
+	\caption{All tracking results in sequence 1 with SRC-TLD and BBS}
+	\label{fig:chp04_05_landing_data_1_left_Contour}    
+\end{figure}
+
 Also, we compared SRC-TLD with Meanshift, AdaBoost and standard TLD methods under different situations. The results was shown in Fig.\ref{lab:TLD_with_others}. The center location error of our methods are all within 7 pixel accuracy, which is the best compare with the other real-time tracking algorithms.
 \begin{table*}[]
 	\centering
-	\caption{SRC-TLD Method Comparing with Other Tracking Algorithms}
+	\caption{Target Detection Precision in Image Plane}
 	\label{lab:TLD_with_others} 
+	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{ccccccc}
 			\hline
-			\multicolumn{1}{l}{\multirow{2}{*}{}}                               & \multirow{2}{*}{Sequence} & \multirow{2}{*}{Frames} & AdaBoost     & Meanshift     & TLD          & \begin{tabular}[c]{@{}c@{}}TLD with \\ Semi-Random Pair\end{tabular} \\ \cline{4-7} 
-			\multicolumn{1}{l}{}                                                &                           &                         & \multicolumn{4}{c}{Center Location Error(pixel) / Speed(fps)}                                                     \\ \hline
-			\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}Small-sized\\ UAV\end{tabular}} & 1                         & 355                     & 6.31 / 9.51  & 14.39 / 15.35 & \textbf{6.14} / 21.13 & 6.20 / \textbf{21.22}                                                         \\
+			\multicolumn{1}{l}{\multirow{2}{*}{}}                               & \multirow{2}{*}{\textbf{Sequence}} & \multirow{2}{*}{\textbf{Frames}} & \textbf{AdaBoost}     & \textbf{Meanshift}     & \textbf{TLD}          & \begin{tabular}[c]{@{}c@{}} \textbf{TLD with} \\ \textbf{Semi-Random Pair} \end{tabular} \\ \cline{4-7} 
+			\multicolumn{1}{l}{}                                                &                           &                         & \multicolumn{4}{c}{Center Location Error in Image Plane (pixel) / Speed(fps)}                                                     \\ \hline
+			\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}\textbf{Small-sized}\\ \textbf{UAV}\end{tabular}} & 1                         & 355                     & 6.31 / 9.51  & 14.39 / 15.35 & \textbf{6.14} / 21.13 & 6.20 / \textbf{21.22}                                                         \\
 			& 2                         & 384                     & 7.47 / 10.81 & 14.25 / 15.11 & 6.37 / 20.91 & \textbf{6.31} / \textbf{21.19}                                                         \\
 			& 3                         & 340                     & 6.61 / 10.14 & 13.48 / 15.33 & 5.62 / \textbf{21.10} & \textbf{5.23} / 20.60                                                         \\
 			& 4                         & 338                     & 7.77 / 10.12 & 13.85 / 14.71 & 5.72 / \textbf{20.92} & \textbf{5.88} / 20.82                                                         \\ \hline
-			\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Middle-sized\\ UAV\end{tabular}} & 1                         & 137                     & 8.01 / 8.33  & 11.41 / 13.33 & 7.85 / \textbf{17.00} & \textbf{5.99} / 16.10                                                         \\
+			\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}\textbf{Middle-sized}\\ \textbf{UAV} \end{tabular}} & 1                         & 137                     & 8.01 / 8.33  & 11.41 / 13.33 & 7.85 / \textbf{17.00} & \textbf{5.99} / 16.10                                                         \\
 			& 2                         & 159                     & 9.65 / 8.59  & 13.10 / 13.67 & 6.95 / 16.96 & \textbf{5.12} / \textbf{16.97}                                                         \\
 			& 3                         & 181                     & 8.33 / 8.01  & 11.13 / 13.03 & 6.93 / 17.37 & \textbf{5.39} / \textbf{17.77}                                                         \\ \hline
-		\end{tabular}%
- 
+		\end{tabular}% 
+	}
 \end{table*}
 
  
+%\begin{table}[]
+%	\centering
+%	\caption{SRC-TLD and BBS Algorithm Performance}
+%	\label{my-label}
+%	\begin{tabular}{ccc}
+%		\hline
+%		& \textbf{Parameters} & \textbf{Unit} \\ \hline
+%		\textbf{CPU} & 2.8G & Hz \\
+%		\textbf{RAM} & 8G & Byte \\
+%		\textbf{Image Size} & 640 $\times$ 320 & Pixel \\
+%		\textbf{Average Frames per Sequences} & 120 & Frame \\
+%		\textbf{Average Time Cost per Frame} & 102 & ms \\ \hline
+%	\end{tabular}
+%\end{table}
  
 %TODO:
 %Effect of Ship Motion on the Automatic Landing Performance of a UAV - Navy Safety Boundaries
@@ -917,9 +954,9 @@ The landing procedure were divided into four sections: (1) The UAV takeoff from 
 Based on the results of simulation,  seven sets of experimental results are conduced to establish the feasibility of the proposed approach. In realistic application, it is very critical requirements that the lateral deviation error from the middle line of the runway and the lateral acceleration of the vehicle should be perfectly eliminated to minimize the damage of the vehicle.
 \begin{figure*}[!th]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Figs/chp08_23_ground_landing.pdf}	
+	\includegraphics[width=\textwidth]{Figs/sci02_landing_results_big.pdf}	
 	\caption{Ground Landing Processure}
-	\label{fig:chp08_23_ground_landing}
+	\label{fig:sci02_landing_results_big}
 \end{figure*}
 
 
@@ -927,6 +964,7 @@ Based on the results of simulation,  seven sets of experimental results are cond
 	\centering
 	\caption{Eight Experiment Results in Different Weather Condition}
 	\label{lab:eight_ground_landing}
+	\resizebox{\textwidth}{!}{%
 	\begin{tabular}{cccccc}
 		\hline
 		\multicolumn{1}{l}{\textbf{No.}} & \multicolumn{1}{l}{\textbf{Weather Condition}} & \multicolumn{1}{l}{\textbf{Detection Distance}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{i}^{O,c}$(m)}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{j}^{O,c}$(m)}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{k}^{O,c}$(m)}} \\ \hline
@@ -939,6 +977,7 @@ Based on the results of simulation,  seven sets of experimental results are cond
 		\textbf{7} & Overcast & 503.175 & 0.483 & \textbf{1.345} & \textbf{0.576} \\
 		\textbf{8} & Overcast & \textbf{534.238} & \textbf{0.470} & \underline{1.772} & 0.581 \\ \hline
 	\end{tabular}
+	}		
 \end{table*}
 
 
@@ -946,7 +985,7 @@ As the theoretical and simulation result discussed, the localization errors in e
 
 \begin{table*}[!th]
 	\centering
-	\caption{Guidance Error in Each Axes at Separated Interval}
+	\caption{Guidance Error in Each Axes at Separated Interval with SRC-TLD and BBS Algorithms}
 	\label{lab:ground_landing}
 	\begin{tabular}{cccc|cccc}
 		\hline
@@ -969,39 +1008,61 @@ As the theoretical and simulation result discussed, the localization errors in e
 	\end{tabular}
 \end{table*}
 
-
-
-\begin{figure*}[!t]
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Figs/chp08_21_river_landing.pdf}	
-	\caption{Surface Landing Processure}
-	\label{fig:chp08_21_river_landing}
-\end{figure*}
+	\caption{UAV 3D Localization Error with Tracking Algorithms}
+	\label{lab:3D_Error_Algorithms}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{ccccc|cc}
+			\hline
+			& \multicolumn{4}{c|}{\textbf{Previous Methods}} & \multicolumn{2}{c}{\textbf{Our Methods}} \\ \cline{2-7} 
+			\multicolumn{1}{l}{} & \textbf{Mean Shift} & \textbf{AdaBoost} & \textbf{Chan-Vase} & \textbf{Saliency-inspired} & \textbf{SRC-TLD} & \textbf{SRC-TLD + BBS} \\ \hline
+			\textbf{RMSE X (m)} & 0.578 & 0.457 & 0.271 & 0.770 & 0.542 & \textbf{0.251} \\
+			\textbf{RMSE Y (m)} & 5.241 & 2.421 & 1.811 & 1.763 & 1.437 & \textbf{1.314} \\
+			\textbf{RMSE Z (m)} & 0.823 & 0.547 & 0.314 & 0.508 & 0.348 & \textbf{0.212} \\
+			\hline
+			\textbf{\begin{tabular}[c]{@{}c@{}}Average \\ Frame Rate (fps)\end{tabular}} & 20.131 & 13.152 & 7.131 & 8.013 & \textbf{21.345} & 10.467 \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+%\begin{figure*}[!t]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{Figs/chp08_21_river_landing.pdf}	
+%	\caption{Surface Landing Processure}
+%	\label{fig:chp08_21_river_landing}
+%\end{figure*}
 
 
-\begin{figure*}[!ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Figs/chp08_16_ship_ptus.pdf}	
-	\caption{Guidance Configuration on Floating Platform}
-	\label{fig:chp08_16_ship_ptus}
-\end{figure*}
+%\begin{figure*}[!ht]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{Figs/chp08_16_ship_ptus.pdf}	
+%	\caption{Guidance Configuration on Floating Platform}
+%	\label{fig:chp08_16_ship_ptus}
+%\end{figure*}
 
 
 
-\begin{table*}[!th]
-	\centering
-	\caption{Three Surface Landing Experiments Results}
-	\label{lab:three_ship_landing}
-	\begin{tabular}{cccccc}
-		\hline
-		\multicolumn{1}{l}{\textbf{No.}} & \multicolumn{1}{l}{\textbf{Weather Condition}} & \multicolumn{1}{l}{\textbf{Detection Distance}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{i}^{O,c}$(m)}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{j}^{O,c}$(m)}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{k}^{O,c}$(m)}} \\ \hline
-		\textbf{1} & Clear & 628.735 & 0.514 & 1.721 & 0.371 \\
-		\textbf{2} & Clear & \textbf{632.134} & 0.547 & 1.363 & 0.342 \\
-		\textbf{3} & Clear & \underline{622.311} & 0.583 & 1.571 & 0.389 \\ \hline
-	\end{tabular}
-\end{table*}
+%\begin{table*}[!th]
+%	\centering
+%	\caption{Three Surface Landing Experiments Results}
+%	\label{lab:three_ship_landing}
+%	\resizebox{\textwidth}{!}{%
+%	\begin{tabular}{cccccc}
+%		\hline
+%		\multicolumn{1}{l}{\textbf{No.}} & \multicolumn{1}{l}{\textbf{Weather Condition}} & \multicolumn{1}{l}{\textbf{Detection Distance}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{i}^{O,c}$(m)}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{j}^{O,c}$(m)}} & \multicolumn{1}{l}{\textbf{RMSE $\mathbf{k}^{O,c}$(m)}} \\ \hline
+%		\textbf{1} & Clear & 628.735 & 0.514 & 1.721 & 0.371 \\
+%		\textbf{2} & Clear & \textbf{632.134} & 0.547 & 1.363 & 0.342 \\
+%		\textbf{3} & Clear & \underline{622.311} & 0.583 & 1.571 & 0.389 \\ \hline
+%	\end{tabular}
+%	}
+%\end{table*}
 
 Our vision systems uses customized vision algorithms and off-the-shelf hardware to perform in real-time. Actual flight test results on our UAV testbed show our vision-based state estimates are accurate to within 5 cm in each axis of translation and 5 degrees in each axis of rotation.
+
+The comparison of 3D localization error between various lists in Tabel. \ref{lab:3D_Error_Algorithms}.
 
 \subsection{Conclusion}
 This paper presents a complete framework of the ground-based stereo localization  problem and shows a real practical use case where the approach
