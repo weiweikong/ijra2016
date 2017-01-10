@@ -10,7 +10,7 @@
 % content for various journals. Please consult a previous issue of
 % your journal as needed.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\dfrac{num}{den}%%%%%%%%%%%%
 %
 % First comes an example EPS file -- just ignore it and
 % proceed on the \documentclass line
@@ -104,14 +104,15 @@
 
 \begin{document}
 \date{}
-\title{Ground Stereo-Vision-in-Loop Localization for Safe Landing of Fixed-wing UAVs: Architecture and Algorithms}
+\title{Ground Stereo-Vision-in-Loop Localization for Safe Landing of Unmanned Aerial Vehicles}
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
 %\titlerunning{Short form of title}        % if too long for running head
 
+%\author{Weiwei Kong, Tianjiang Hu, Daibing Zhang, Lincheng Shen\thanks{Weiwei Kong, Tianjiang Hu, Daibing Zhang, Lincheng Shen are with College of Mechatronics and Automation, National University of Defense Technology, Changsha, 410073, P. R China, {\tt\small kongweiwei@nudt.edu.cn}.}, Jianwei Zhang\thanks{Jianwei Zhang is with the Institute of Technical Aspects of Multimodal systems(TAMS), Department of Computer Science, University of Hamburg, Germany} %etc.
+%}
 \author{Weiwei Kong, Tianjiang Hu, Daibing Zhang, Lincheng Shen, Jianwei Zhang %etc.
 }
-
 %\authorrunning{Short form of author list} % if too long for running head
 
 %\institute{W. Kong \at
@@ -132,11 +133,11 @@
 \maketitle
 
 \begin{abstract}
-Orchestrating a safe landing is one of the greatest challenges for Unmanned Aerial Vehicles (UAVs). This paper aims at the autonomous localization and landing bottleneck by developing a ground-based stereo visual system. This novel visual system consists of two separate perception modules each of which is equipped with a pan-and-tilt unit (PTU) and optical sensors. Eventually, such a physically separated and information coordinated architecture outperforms the pre-existing ones and contributes to locating the aircraft more precisely by stereo triangular geometry with an extended baseline length and a better field of view (FOV). Furthermore, a tracking-inspired stereo detection algorithm is proposed to improve localization accuracy. The algorithm innovatively synthesizes a Bounding Box Shrinking (BBS) effect into the Semi-Random-Code Tracking-Learning-Detection (SRC-TLD) approach.  Both datasets drove offline simulation, and online flight experiments are conducted to validate effectiveness as well as better performance of the novel system and the overall accuracy during the landing process. Also, this autonomous landing system caters for all of the different UAV system in operation, such as fixed-wing and rotary wing, particularly in GNSS-denied or -impaired environments.
+Orchestrating a safe landing is one of the greatest challenges for Unmanned Aerial Vehicles (UAVs). This paper aims at the autonomous localization and landing bottleneck by developing a ground-based stereo visual system. This novel visual system consists of two separate perception modules each of which is equipped with a pan-and-tilt unit (PTU) and optical sensors. Eventually, such a physically separated and information coordinated architecture outperforms the pre-existing ones and contributes to locating the aircraft more precisely by stereo triangular geometry with an extended baseline length and a better field of view (FOV). Furthermore, a tracking-inspired stereo detection algorithm is proposed to improve localization accuracy. The algorithm innovatively synthesizes a Bounding Box Shrinking (BBS) effect into the Semi-Random-Code Tracking-Learning-Detection (SRC-TLD) approach.  Both datasets driven offline simulation, and online flight experiments are conducted to validate effectiveness as well as better performance of the novel system and the overall accuracy during the landing process. Also, this autonomous landing system caters for all of the different UAV system in operation, such as fixed-wing and rotary wing, particularly in GNSS-denied or -impaired environments.
 
 %These two modules setup at the each side of the runway and benefiting from the large baseline and extended field of view (FOV), the aircraft could be tracked at $1\ km$ in distance. The position of the UAV could be calculated by triangular geometry. We provide the results from both simulation and practical experiments, showing the performance of the novel system and the overall accuracy during the landing process. Our approach offer increased accuracy in measuring aircraft position in GNSS-denied scenario when compare to human operation. 
 
-\textbf{Keywords: UAV; Stereo Vision; Localization}
+\textbf{Keywords: Unmanned Aerial Vehicle (UAV); Safe landing; Stereo vision; Localization}
 % \PACS{PACS code1 \and PACS code2 \and more}
 % \subclass{MSC code1 \and MSC code2 \and more}
 \end{abstract}
@@ -150,7 +151,6 @@ Orchestrating a safe landing is one of the greatest challenges for Unmanned Aeri
 \label{intro}
 %无人机大量应用
 In the past decades, the use of unmanned aerial vehicles (UAVs) has increased tremendously in both military and civil fields. Although aerial robots have successfully been implemented in several applications, there are still new research directions relate to them. Kumar et al. \cite{kumar2012opportunities} summarized the opportunities and challenges of this growing field, from the model design to high-level perception capability. All of these issues are concentrating on improving the degree of autonomy, which supports UAVs continue to be used in novel and surprising ways.
-
 % 自主降落能力至关重要
 No matter fixed-wing or rotor-way platforms, a standard fully unmanned autonomous system(UAS) involves performing takeoffs, waypoint navigation and landings. Among them, automatic landing is the most delicate and critical phase of UAV flights. Two technical reports \cite{williams2004summary,manning2004role}, claimed that nearly 50\% of fixed-wing UAVs such as Hunter and Pioneer operated by the US military suffer accidents during landing. Also, almost 70\% of mishaps for Pioneer UAVs occurred during landing due to human factors. So a proper assist system is needed to enhance the reliability of landing task. Generally, two main capabilities of the system are required. The first one is navigation and localization of UAVs, and the second one is generating the appropriate guidance command to guide UAVs for a safe landing. In this paper, we mainly focus on the first issue and try to improve the guidance accuracy and robustness.
 
@@ -993,7 +993,7 @@ To compare with the standard TLD method, the stability of Semi-random Code metho
 	\label{fig:chp04_05_landing_data_1_left_Contour}    
 \end{figure}
 
-Also, we compared SRC-TLD with Meanshift, AdaBoost and standard TLD methods under the different size of UAVs in seven image sequences. The results were shown in Tab.\ref{lab:TLD_with_others}. The center location error (CLE) of our methods are all within $7\ pixel$ accuracy, which is the best compare with the other real-time tracking algorithms and the fattest process frame rate is $21.22 fps$. SRC-TLD method enhances the CLE around $2\ pixel$ both in small-sized UAV and middle-sized UAV sequences.
+Also, we compared SRC-TLD with Meanshift, AdaBoost and standard TLD methods under the different size of UAVs in seven image sequences. The results were shown in Table \ref{lab:TLD_with_others}. The center location error (CLE) of our methods are all within $7\ pixel$ accuracy, which is the best compare with the other real-time tracking algorithms and the fattest process frame rate is $21.22 fps$. SRC-TLD method enhances the CLE around $2\ pixel$ both in small-sized UAV and middle-sized UAV sequences.
 
 \begin{table*}[ht]
 	\centering
@@ -1046,7 +1046,7 @@ The landing procedure was divided into four sections: (1) The UAV takeoff from t
 
 
 \subsubsection{Real-flight Experiments}
-Based on the results of simulation, eight sets of experimental results are conduced to establish the feasibility of the proposed approach. In realistic application, it is very critical requirements that the lateral deviation error from the middle line of the runway and the lateral acceleration of the vehicle should be perfectly eliminated to minimize the damage of the vehicle. Fig.\ref{fig:sci02_landing_results_big} illustrate the approaching results. The left image shows the landing waypoints projecting on a satellite map where $A$ is the locking point of the ground landing and $B$ is the desired touch down point on the runway. In addition, the three 3D landing curves represent the calculated results from TLD, SRC-TLD and SRC-TLD with BBS methods. To compare with the ground truth, recording during the landing process by DGPS, the location errors of each axis are lists on the right side. In X and Z-axis, the location error decreases while the vehicle approaches the landing area. The error in Y-axis has larger error comparing with X and Z-axis, and the disturbance is significant.
+Based on the results of simulation, eight sets of experimental results are conduced to establish the feasibility of the proposed approach as shown in Tabel \ref{lab:eight_ground_landing}. In realistic application, it is very critical requirements that the lateral deviation error from the middle line of the runway and the lateral acceleration of the vehicle should be perfectly eliminated to minimize the damage of the vehicle. Fig.\ref{fig:sci02_landing_results_big} illustrate the approaching results. The left image shows the landing waypoints projecting on a satellite map where $A$ is the locking point of the ground landing and $B$ is the desired touch down point on the runway. In addition, the three 3D landing curves represent the calculated results from TLD, SRC-TLD and SRC-TLD with BBS methods. To compare with the ground truth, recording during the landing process by DGPS, the location errors of each axis are lists on the right side. In X and Z-axis, the location error decreases while the vehicle approaches the landing area. The error in Y-axis has larger error comparing with X and Z-axis, and the disturbance is significant.
 
 \begin{figure*}[!th]
 	\centering
@@ -1076,7 +1076,7 @@ Based on the results of simulation, eight sets of experimental results are condu
 	}		
 \end{table*}
 
-As the theoretical and simulation result discussed, the localization errors in each axis are large when the UAV is far way from the ground visual system. To illustrate the result more clearly, we compared the localization results with DGPS at separated intervals which are shown in Tabel. \ref{lab:ground_landing}. Previously, the average error of each axis at large distance (more than $400\ m$) are large, especially in depth dimension. The comparison of 3D localization error between various lists in Tab. \ref{lab:3D_Error_Algorithms}. The SRC-TLD results have the best real-time performance which reaches $21.345\ fps$ and has better accuracy compare with the Meanshift method which has similar process speed. In accuracy measurement, the SRC-TLD with BBS calculates the 3D position more precisely at the cost of slower frame rate.
+As the theoretical and simulation result discussed, the localization errors in each axis are large when the UAV is far way from the ground visual system. To illustrate the result more clearly, we compared the localization results with DGPS at separated intervals which are shown in Tabel \ref{lab:ground_landing}. Previously, the average error of each axis at large distance (more than $400\ m$) are large, especially in depth dimension. The comparison of 3D localization error between various lists in Table \ref{lab:3D_Error_Algorithms}. The SRC-TLD results have the best real-time performance which reaches $21.345\ fps$ and has better accuracy compare with the Meanshift method which has similar process speed. In accuracy measurement, the SRC-TLD with BBS calculates the 3D position more precisely at the cost of slower frame rate.
 
 \begin{table*}[!th]
 	\centering
