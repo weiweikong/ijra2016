@@ -133,7 +133,7 @@
 \maketitle
 
 \begin{abstract}
-Orchestrating a safe landing is one of the greatest challenges for Unmanned Aerial Vehicles (UAVs). This paper aims at the autonomous localization and landing bottleneck by developing a ground-based stereo visual system. This novel architecture consists of two separate perception components which are equipped with a pan-and-tilt unit (PTU) and optical sensors. Eventually, such a physically separated and information coordinated architecture outperforms the pre-existing ones and contributes to locating the aircraft more precisely by stereo triangular geometry with an extended baseline length and a better field of view (FOV). Furthermore, a tracking-inspired stereo detection algorithm is proposed to improve localization accuracy. The algorithm innovatively synthesizes a Bounding Box Shrinking (BBS) effect into the Semi-Random-Code Tracking-Learning-Detection (SRC-TLD) approach.  Both datasets driven offline simulation, and online flight experiments are conducted to validate effectiveness as well as better performance of the novel system and the overall accuracy during the landing process. Also, this autonomous landing system caters for different UAV systems in operation, such as fixed-wing and rotary wing, particularly in GNSS-denied or -impaired environments.
+Orchestrating a safe landing is one of the greatest challenges for Unmanned Aerial Vehicles (UAVs). This paper aims at the autonomous localization and landing bottleneck by developing a ground-based stereo visual system. This novel architecture consists of two separate perception components which are mounted with a pan-and-tilt unit (PTU) and optical sensors. Eventually, such a physically separated and information coordinated architecture outperforms the pre-existing ones and contributes to locating the aircraft more precisely by stereo triangular geometry with an extended baseline length and a better field of view (FOV). Furthermore, a tracking-inspired stereo detection algorithm is proposed to improve localization accuracy. The algorithm innovatively synthesizes a Bounding Box Shrinking (BBS) effect into the Semi-Random-Code Tracking-Learning-Detection (SRC-TLD) approach.  Both datasets driven offline simulation, and online flight experiments are conducted to validate effectiveness as well as better performance of the novel system and the overall accuracy during the landing process. Also, this autonomous landing system caters for different UAV systems in operation, such as fixed-wing and rotary wing, particularly in GNSS-denied or -impaired environments.
 
 %These two modules setup at the each side of the runway and benefiting from the large baseline and extended field of view (FOV), the aircraft could be tracked at $1\ km$ in distance. The position of the UAV could be calculated by triangular geometry. We provide the results from both simulation and practical experiments, showing the performance of the novel system and the overall accuracy during the landing process. Our approach offer increased accuracy in measuring aircraft position in GNSS-denied scenario when compare to human operation. 
 
@@ -145,24 +145,22 @@ Orchestrating a safe landing is one of the greatest challenges for Unmanned Aeri
 
 
 
-
-
 \section{Introduction}
 \label{intro}
 %无人机大量应用
-In the past decades, the application of unmanned aerial vehicles (UAVs) has increased enormously in both civil and military scenarios. Although aerial robots have successfully been implemented in several applications, there are still new research directions relate to them. Kumar et al. \cite{kumar2012opportunities} outlined the opportunities and challenges of this developing field, from the model design to high-level perception capability. All of these issues are concentrating on improving the degree of autonomy, which supports UAVs continue to be used in novel and surprising ways.
+Over the past few decades, the application of unmanned aerial vehicles (UAVs) has increased enormously in both civil and military scenarios. Although aerial robots have successfully been implemented in several applications, there are still new research directions relate to them. Kumar et al. \cite{kumar2012opportunities} outlined the opportunities and challenges of this developing field, from the model design to high-level perception capability. All of these issues are concentrating on improving the degree of autonomy, which supports UAVs continue to be used in novel and surprising ways.
 % 自主降落能力至关重要
 No matter fixed-wing or rotor-way platforms, a standard fully unmanned autonomous system(UAS) involves performing takeoffs, waypoint flight and landings. Among them, landing maneuver is the most delicate and critical phase of UAV flights. Two technical reports \cite{williams2004summary,manning2004role} argued that nearly 70\% mishaps of Pioneer UAVs encountered during landing process caused by human factors. So a proper assist system is needed to enhance the reliability of landing task. Generally, two main capabilities of the system are required. The first one is navigation and localization of UAVs, and the second one is generating the appropriate guidance command to guide UAVs for a safe landing. 
 
 % GNSS不行
-For manned aircraft, the traditional landing system adopts a radio beam directed upward to vehicle from the ground \cite{mclean1990automatic, stevens2003aircraft}. By measuring the angular deviation from the beam through onboard equipment, the pilot knows the perpendicular displacement of the aircraft in the vertical channel. For the azimuth information, additional equipment is required. However, due to the size, weight, and power (SWaP) constraints, it is impossible to equip these instruments in UAV. Thanks to the Global Navigation Satellite System(GNSS) technology, we have seen lots of successful practical applications of autonomous UAVs in outdoor environments such as transportation, aerial photography and intelligent farming. Unfortunately, in some circumstances, such as low altitude or urban operations, the receiver antenna is prone to lose line-of-sight with satellites and leads to unstable localization information \cite{farrell1998gps}. So the autonomous landing in unknown or GNSS-shaded environment is still an open problem. 
+For manned aircraft, the traditional landing system adopts a radio beam directed upward to vehicle from the ground \cite{mclean1990automatic, stevens2003aircraft}. By measuring the angular deviation from the beam through onboard equipment, the pilot knows the perpendicular displacement of the aircraft in the vertical channel. For the azimuth information, additional equipment is required. However, due to the size, weight, and power (SWaP) constraints, it is impossible to equip these instruments in UAV. Thanks to the Global Navigation Satellite System(GNSS) technology, we have seen lots of successful practical applications of autonomous UAVs in outdoor circumstances such as transportation, aerial photography and intelligent farming. Unfortunately, in some environments, such as low altitude or urban operations, the receiver antenna failed to received the signal due to the limited line-of-sight with satellites and leads to unstable localization information \cite{farrell1998gps}. In unknown or GNSS-shaded environment, the autonomous landing of UAVs is still an open problem. 
 
 Visual based approach is an obvious way to achieve the autonomous landing by estimating flight speed and distance to the landing area, in a moment-to-moment fashion. Generally, two types of visual methods can be considered. The first type is the vision-based onboard system, which has been widely studied. The other is to guidance the aircraft using the ground-based camera system. Once the aircraft is detected by the camera during the landing process, its characteristics, such as type, location, heading and velocity, can be derived by the guidance system. Based on this information, the autopilot could align the vehicle carefully towards the landing area. By adapting its velocity and acceleration, the onboard vision system achieves a safely landing. In summary, two key elements of the landing problem are detecting the UAV and calculating the location of the UAV relative to the landing field. 
 
-Motivated by these pressing problems, we introduce a novel ground-based visual landing system. Unless the existing ground-based guidance system that has limited baseline, our proposed approach sets up optical senors on a PTU to increase the field of view (FOV) of cameras and enhance the detection distance at which a reliable vision lock could be established and maintained. The contributions and works of this paper are lists as follows:
+Motivated by these pressing problems, we introduce a novel ground-based visual landing system. Unless the existing ground-based guidance system that has limited baseline, our proposed approach sets up optical senors on a PTU to increase the field of view (FOV) of cameras. This separated configuration also enhance the detection distance and the system could establish and maintain a reliable vision lock once the optical sensor detects the target. The contributions and works of this paper are lists as follows:
 \begin{itemize}
-	\item First, we developed a novel ground-based guidance system with large baseline and $360\degree$ circular coverage, which is independent of GNSS.
-	\item Second, we proposed SRC-TLD and BBS algorithms fusing with PTU operation status to improve the localization precision and yield real-time capability.
+	\item First, we proposed a novel ground-based guidance architecture with large baseline and $360\degree$ circular coverage, which is independent of GNSS.
+	\item Second, we developed SRC-TLD and BBS algorithms fusing with PTU operation status to improve the localization precision and yield real-time capability.
 	\item Third, the entire system has implemented and evaluated with a fixed-wing aircraft with a proper safely landing strategy.
 \end{itemize}
 
@@ -194,17 +192,17 @@ Motivated by these pressing problems, we introduce a novel ground-based visual l
 %The Instrument Landing System (ILS) is widely used in most of the international airports around the world allowing pilots to establish on the approach and follow the ILS, in autopilot or not, until the decision height is reached. This approach refer to a ground-based instrument system providing accurate guidance to a plane takeing-off from a runway or approaching and landing on a runway. A reference book \cite{Nolan2010} provided in-depth discussion of the ILS.
 
 \subsection{On-board Vision Method}
-The challenge of accurately landing a UAV by using vision-based control has been well developed for autonomous rotorcraft. Considering the model as an eye-in-hind configuration, a practical template-based visual servo control frame work has been proposed by Guenard \cite{Guenard2008}. By calculating the image error kinematics, a designed Lyapunov controller shows good performance and robustness of hovering a quadrotor UAV. 
+The problem of accurately landing an unmanned rotorcraft using vision-based control has been well studied. Considering the model as an eye-in-hind configuration, a practical template-based visual servo control frame work has been proposed by Guenard \cite{Guenard2008}. By calculating the image error kinematics, a designed Lyapunov controller shows good performance and robustness of hovering a quadrotor UAV. 
 
 %Mej{\'{\i}}as developed an image-based velocity references approach to visually control the altitude and lateral of the helicopter \cite{Mejias2006}. These vision velocity reference is combined with GPS and IMU data for more accurate and position measurements.
 
-An alternative to the template-based method is the optical-flow-aided position measurement system. This approach was inspired by flying insect navigation strategies \cite{Green2004} and have been developed over the years. Triggered by the observations of honeybees, an optic flow regulator was introduced \cite{Ruffier2014}. It allows a tethered rotorcraft to handle non-stationary environments and the vehicle has the capability to land safely near a target which assembled on a moving platform. In another recent research \cite{Vlantis2015}, a discrete-time non-linear model predictive controller (MPC) was employed to land a Parrot AR.Drone on a Pioneer mobile robot with inclined platform. The on-board forward facing camera was used for tracking the moving target and the downwards pointing camera for optical flow. For fixed-wing aircraft, Kim et al.\cite{Kim2013} reported a vision-based net recovery system. The ground station received the image captured by the on-board camera aiming to detect a recovery net. The guidance law based on the relative position between the air frame and the net by calculating the longitudinal and lateral bearing angle. This technique is not suitable for the whole landing process because the vision operating range is only $50\ m$.
+An alternative to the template-based method is the optical-flow-aided position measurement system. This approach was inspired by flying insect navigation strategies \cite{Green2004} and have been developed over the years. Triggered by the observations of honeybees, an optic flow regulator was introduced \cite{Ruffier2014}. It enable a tethered rotorcraft to handle non-stationary scenarios and the vehicle has the capability to land safely on a moving platform. In another recent research \cite{Vlantis2015}, the model predictive controller (MPC) was employed to land a Parrot AR.Drone on a Pioneer mobile robot with inclined platform. The on-board forward facing camera was used for tracking the moving target and the downwards pointing camera for optical flow. For fixed-wing aircraft, Kim et al.\cite{Kim2013} reported a vision-based net recovery system. The ground station received the image captured by the on-board camera aiming to detect a recovery net. The guidance law based on the relative position between the air frame and the net by calculating the longitudinal and lateral bearing angle. This technique is not suitable for the whole landing process because the vision operating range is only $50\ m$.
 
 
 %  QR-Code
 % but no automatic landing was attempted.
 
-For cooperative localization, some structured landing mark, such as 2D barcodes, helipad, could provide the relative transform between landing area and camera. Sharp et al. \cite{Sharp2001} solved the recovery assignment of a Yamaha R-50 helicopter by using the designed landing pattern (white squares) for landing area recognition and evaluating the relative position. By calculating the multiple view matrix, their proposed algorithms\cite{Shakernia2002} improve the motion and structure estimation. However, the autopilot only regulates the horizontal position to hover over the landing platform. With the help of an H-shape pattern, Saripalli et al. \cite{Saripalli2003} also presented an image-moment-based method for autonomous landing of a helicopter. However, the precise height estimation benefits from the differential GPS system. In 2012, a worthwhile study \cite{richardsonautomated2013} provide a vision-based framework for a rotatory craft recovery on to a mobile platform. The onboard camera system calculates the displacement and orientation of the vehicle relative to the pattern and autonomous maneuvers the craft towards the landing platform. The workable limit for robust tracking was $10\ m$. For fixed-wing landing, German Aerospace Center (DLR) built and tested the drone which successfully touched down on the net which installed on the wagon's roof by detecting the QR code\cite{DLR_Landing}. However, due to the viewing angle of the cameras and the size of the fiducial marker, the detection distance of the sole of vision control method is limited.
+For cooperative localization, some structured landing mark, such as 2D barcodes, helipad, could provide the relative transform between landing area and camera. Sharp et al. \cite{Sharp2001} solved the recovery assignment of a Yamaha R-50 helicopter by using the designed landing pattern (white squares) for landing area recognition and evaluating the relative position. By calculating the multiple view matrix, their proposed algorithms\cite{Shakernia2002} improve the motion and structure estimation. However, the autopilot only regulates the horizontal position to hover over the landing platform. With the help of an H-shape pattern, Saripalli et al. \cite{Saripalli2003} also presented an image-moment-based method for autonomous landing of a helicopter. However, the precise height estimation benefits from the differential GPS system. In 2012, a worthwhile study \cite{richardsonautomated2013} provide a vision-based framework for a rotatory craft recovery on to a mobile platform. The onboard camera system measures the orientation and displacement of the vehicle relative to the pattern and autonomous maneuvers the craft towards the landing platform. The workable limit for robust tracking was $10\ m$. For fixed-wing landing, German Aerospace Center (DLR) built and tested the drone which successfully touched down on the net which installed on the wagon's roof by detecting the QR code\cite{DLR_Landing}. However, due to the viewing angle of the cameras and the size of the fiducial marker, the detection distance of the sole of vision control method is limited.
 
 
 % TODO 有效探测距离
@@ -215,7 +213,9 @@ The combination of laser and visual system also has a long history in this field
 %While there is significant work using electro-optical pod, laser scanner and radar, those methods require more hardware for the aircraft to carry; therefore, in this case, we focus just on ground-based visual case, which is a lighter weight solution for UAV.
 % Because laser-based system are in most cases emit radiation and are therefore likely to reveal the aircraft location to hostile forces.
 \subsection{Ground-based Vision Method}
-While several approaches have been developed for on-board vision-based control of UAVs, few have shown landing a fixed-wing guided by a ground-based vision system. Wang \cite{Wang2006} applied a web camera actuated by a step motor to track and guide a micro-aircraft. However, this system could not supply the accurate localization information because of the monocular vision limitation. Researchers from Chiba University\cite{pebrianti2010autonomous} used a ground-based Bumblebee stereo vision system to calculate the 3D position of a quadrotor at the altitude of 6 meters. The drawback of this approach is the limited baseline resulting the narrow operation range. So multi-camera method was considered by Martinez \cite{Martinez2009a}, who presented a trinocular on-ground system. This approach is composed by three cameras for extracting key features of the quadrotor in order to obtain robust 3D position estimation. But the range of detection is still not sufficient for landing a fixed-wing UAV. Also, the calibration parameters of this multi-camera system are nontrivial to obtain.
+While numerous approaches have been developed for on-board vision-based control of UAVs, a handful of researchers have discussed landing a fixed-wing guided by a ground-based vision system. Wang \cite{Wang2006} applied a web camera actuated by a step motor to guide a micro-aircraft. However, this approach could not supply the accurate localization information because of the monocular vision limitation. Researchers from Chiba University\cite{pebrianti2010autonomous} set up a ground-based stereo vision system using Bumblebee camera which calculates the position of a quadrotor. The disadvantage of this approach is the short baseline resulting the narrow operating range. So multi-camera method was considered by Martinez \cite{Martinez2009a}, who presented a ground trinocular system which consisted of three cameras. This approach estimates the 3D position of the helicopter based on the triangle configuration. But the maximum detection distance is still not sufficient for landing a fixed-wing UAV. Also, the calibration parameters of this multi-camera system are nontrivial to obtain.
+
+Our group first developed the traditional stereo ground-based system with infrared cameras \cite{kong2013autonomous} while this system has limited detection distance. To enhance the operating capability, we conducted the triangular geometry localization method to the PTU-based system and discussed the error analysis in detail \cite{kong2014ground}. According to the previous work, the localization accuracy largely depends on the aircraft detection precision in the camera image plane. So we implemented Chan-Vese method \cite{tang2016ground} and Saliency-inspired method \cite{ma2016stereo} to detect and track the vehicle more accurately, however, these approaches are not suitable for real-time requirements.
 
 %For more vision-based system review, we also reviewed various vision-based landing approaches performing on different platform \cite{kong2014vision} and Gautam etc. provide another general review of the autonomous landing techniques for UAVs \cite{Gautam2014}.
 
@@ -223,7 +223,7 @@ While several approaches have been developed for on-board vision-based control o
 
 
 \section{System Architechture of Ground-based Stereo Localization}
-In this section, we illustrate the theoretical model of the ground-to-air localization system. We first recap the traditional stereo vision model which has limited base line restraining the detection distance. To enlarge the system working boundary, we set up the camera and other sensor modules on the two separated PTU and then calculate the target according to the image information and rotation angle from PTU. Each vision module operates independently and delivering the results of image processing and PTU rotation status to the ground station computer which estimates relative position of the UAV. The architecture of the ground-to-air stereo vision system is shown in Fig.\ref{fig:SystemStructure}.
+In this section, we illustrate the theoretical model of the ground-based localization framework. We first recap the traditional stereo vision model which has limited base line restraining the detection distance. To enlarge the system working boundary, we set up the camera and other sensor modules on the two separated PTU and then calculate the target according to the image information and rotation angle from PTU. Each vision module operates independently and delivering image processing results and rotation status of PTU to the ground station computer which measures local position of the UAV. The architecture of the ground-to-air stereo vision system is shown in Fig.\ref{fig:SystemStructure}.
 %Since the ground station judging the switch from GNSS-aid method to vision-aid method, the auto pilot guided UAV based on the properly data received by XTend modem. 
 
 
@@ -309,9 +309,9 @@ where $b$ is the baseline and $d=u_l-u_r$ is the pixel disparity. The traditiona
 \subsection{Separate Stereo Vision System Configuration}
 In order to detect the target at long distance, the large base line, more than $5\ m $, is required. Benefiting the camera assembled on PTU separately, we could switch the baseline freely according to the expected detection distance and target size.
 
-For the world coordinate system $(X, Y, Z)$, its origin is located on the rotation center of the left PTU. For the sake of simplicity, the camera is mounted on the PTU in the way that the axes of the camera frame are parallel to those of PTU frame. So it can be assumed that the camera coordinate coincides with the PTU frame. 
+For the world coordinate system $(X, Y, Z)$, its origin is located on the rotation center of the left PTU. For the sake of simplicity, the optical sensor is mounted on the PTU in the way that the axes of the camera frame are parallel to those of PTU frame. So it can be assumed that the camera coordinate coincides with the PTU frame. 
 
-Fig. \ref{fig:TheoreticalModel} reveals the theoretical model of the optical stereo system. The left and right optical center are defined as ${O_l}$ and ${O_r}$ respectively. So the base line of this system is $O_lO_r$ whose distance is ${D}$. By defining the center of UAV as a point $M$, ${O_lM}$ and ${O_rM}$ denote the connections between the camera frame and the aircraft. Also, ${\phi_l}$, ${\phi_r}$, ${\psi_l}$, ${\psi_r}$ present the pan and tilit status of PTU on each side and the measurement of a counterclockwise direction is positive. When the PTU is in initial state, we get $\phi_l= 0$, $\phi_r=0$, ${\psi_l=0}$ and ${\psi_r=0}$. In this state, the optical axis of each module are parallel the runway.  
+Fig. \ref{fig:TheoreticalModel} reveals the theoretical model of the optical stereo system. The principle point of left and right camera are defined as ${O_l}$ and ${O_r}$ respectively. So the base line of this system is $O_lO_r$ whose distance is ${D}$. By defining the center of UAV as a point $M$, ${O_lM}$ and ${O_rM}$ denote the connections between the camera frame and the aircraft. Also, ${\phi_l}$, ${\phi_r}$, ${\psi_l}$, ${\psi_r}$ present the pan and tilit status of PTU on each side. When the PTU is in initial state, we get $\phi_l= 0$, $\phi_r=0$, ${\psi_l=0}$ and ${\psi_r=0}$. In this state, the optical axis of each module are parallel the runway.  
  
 
 \begin{figure}[!tb]
@@ -321,7 +321,7 @@ Fig. \ref{fig:TheoreticalModel} reveals the theoretical model of the optical ste
 	\label{fig:TheoreticalModel}
 \end{figure}
 
-In practical application, the pixel deviation compensation in horizontal and vertical direction should be concerted, because the point $M$ is not always at the center of the image plane. Fig \ref{fig:Fig02_ImagePlaneOnly} shows the more practical geometry model and for left side, the pixel deviation compensation is calculated by
+In practical application, the compensation of pixel deviation in horizontal and vertical direction has to be concerted, because the point $M$ is not always at the center of the image plane. Fig \ref{fig:Fig02_ImagePlaneOnly} shows the more practical geometry model and for left side, the pixel deviation compensation is calculated by
 \begin{equation} 
 	\left \{
 	\begin{split}
@@ -330,7 +330,7 @@ In practical application, the pixel deviation compensation in horizontal and ver
 	\end{split}
 	\right.
 \end{equation}
-where $f$ is the focus, optical point is $o(u_o,v_o)$, $du$ and $dv$ are the pixel length of the $u$- and $v$-axis in image plane. Redefine the current pan and tilt angle by $\phi_{pl}$ and $\psi_{pl}$, which can be obtained through the serial ports from the PTU directly. Then, the total composition pan and tilt angle is given by
+where optical point is $o(u_o,v_o)$, $f$ is the focus, $du$ and $dv$ are the length of the $u$- and $v$-axis in image plane. Redefine the current pan and tilt angle by $\phi_{pl}$ and $\psi_{pl}$, which can be obtained through the serial ports from the PTU directly. Then, the total composition pan and tilt angle is given by
 \begin{equation} 
 	\left \{
 	\begin{split}
@@ -353,7 +353,7 @@ where $f$ is the focus, optical point is $o(u_o,v_o)$, $du$ and $dv$ are the pix
 %	\caption{The geometry of one PTU with respect to optical center and image plane.}
 %	\label{fig:Fig02_ImagePlaneOnly}
 %\end{figure}
-We could also calculate the composition angle in the same way for the right side module. The target position can be obtained by
+The composition angle of the right side module can be obtained in the same way. The target position can be obtained by
 
 %The world coordinates of point ${M}$ is $(x_M, y_M, z_M)\in \textbf{R}^3 $. Point $N$ is the vertical projection of point $M$ on $XOY$ plane, and $NA$ is perpendicular to $X$-axis. If we define $NA = h$, the following guidance parameters can be obtained:
 \begin{equation}
@@ -748,7 +748,7 @@ In our previous work \cite{ma2016stereo}\cite{tang2016ground}\cite{hu2016ros}, t
 \end{figure*}
 
 \subsection{SRC-TLD Algorithm}
-TLD\cite{kalal2012tracking} is an adaptive tracking-by-learning technique, which tracks target by learning the appearance of the specific region using the online learned classifier. The principal frame work includes three components: 
+TLD\cite{kalal2012tracking}\cite{kong2015ground} is an adaptive tracking-by-learning technique, which detects target by learning the appearance of the specific region while the adaptive classifier updates online. The principal frame work includes three components: 
 \begin{itemize}
 	\item The Tracker Module tries to lock the target frame by frame through Lucas-Kanade method and generates positive and negative examples for Learning Module.
 	
@@ -765,15 +765,15 @@ These three key components operate independently and the data stream was transfe
 	\label{fig:sci03_tld_framework}
 \end{figure*}
 
-Pair pixels comparison is one handy method to extract the target feature. In ensemble classifier, we compare the intensity values of several pixels to describe the target feature. Each bit of the feature code is calculated by
+Pair pixels comparison is one handy method to extract the target feature. In ensemble classifier, we examine the intensity values of various pixels to describe the target feature. Each bit of the feature code is calculated by
 \begin{align}
 	f_i=\left\{ \begin{array}{ll}
 		0 &\mbox{if $I(\mathbf{p}_i) < I(\mathbf{q}_i)$} \\
 		1 &\mbox{otherwise} \end{array} \right.
 \end{align}
-where $I(\mathbf{p}_i)$ and $I(\mathbf{q}_i)$ is the gray scale of pixel at position $\mathbf{p}_i$  and $\mathbf{p}_i$ in image plane. Fig.\ref{fig:01_TLD_Code} shows an instance of a five-pair feature calculation for a single fern. For standard random pairs method, the algorithm selects five different location randomly and implement the pixel comparison. So we could get the binary digit, 10011, in decimal form $F=19$, as the feature of the current region. Combing with the other training data set, we could get a probability finally.
+where $I(\mathbf{p}_i)$ and $I(\mathbf{q}_i)$ is the gray scale of pixel at position $\mathbf{p}_i$  and $\mathbf{p}_i$ in image plane. Fig.\ref{fig:01_TLD_Code} shows an calculation instance of a five-pair feature for a single fern. For standard random pairs method, the algorithm randomly selects five diverse locations and implement the pixel comparison. So we could get the binary code, 10011, which in decimal form is $F=19$, as the feature of the current region. Combing with the other training data set, we could get a probability finally.
 
-However, the standard fully random comparison is only suitable for the target which filled the subwindow, such as in face detection case. The randomness retrieves the appearance of the target and adapts the variance in the TLD framework. For fixed-wing UAV tracking situation, it only takes the small area of the whole Region of Interest (ROI). The nose-section of the UAV projected on the image plane is larger than other sections of the air frame. When the vehicle is far away from the landing area, its wings seems to be a single line. So the general randomness failed to extract the kernel feature of the fixed-wing UAV occasionally. To achieve more stable representation, we set one pixel of each pair with limited randomness by constraining the selection region. The picture on the bottom left of Fig. \ref{fig:01_TLD_Code} shows this region with yellow shade. The other pixels were selected randomly in the rest part of the specific rectangle. We named this process Semi-random Coding (SRC). 
+However, the standard fully random comparison is only proper for the target which filled the small patch, such as in facial detection case. The randomness retrieves the appearance of the object and adapts the deviation in the TLD framework. In fixed-wing UAV tracking situation, the UAV only takes the small area of the whole Region of Interest (ROI). The nose-section of the UAV projected on the image plane is larger than other sections of the air frame. When the distance between the aircraft and landing area is far, its wings seems to be a single line. So the general randomness failed to extract the kernel feature of the fixed-wing UAV occasionally. To achieve more stable representation, we set one pixel of each pair with limited randomness by constraining the selection region. The picture on the bottom left of Fig. \ref{fig:01_TLD_Code} shows this region with yellow shade. The other pixels were selected randomly in the rest part of the specific rectangle. We named this process Semi-random Coding (SRC). 
 
 \begin{figure}[!th]
 	\centering
@@ -792,7 +792,7 @@ In order to enhance the localization accuracy, we need to detect the center of a
 	\label{fig:chp04_07_active_contour_demo}    
 \end{figure}
 
-Some previous works \cite{betser2004automatic} and \cite{sattigeri2007vision}, demonstrated that active contours are autonomous processes which employ image coherence in order to track various features of interest over time. The Level set method is \cite{368173}, \cite{Caselles1993} in which an active contour model founded on the level set formulation of the Euclidean curve shortening equation is proposed. We tested the level set method as discussed in \cite{kong2013autonomous} and found that this method has limited processing frame because of the partial differential calculation. In 2014, the morphological-based approach was designed to calculate the curve evolution \cite{Marquez-Neila2014} which balances the operation speed and accuracy. 
+Some previous works \cite{betser2004automatic} and \cite{sattigeri2007vision} presented that active contours are autonomous processes which use texture coherence to extract various features of interest during the contour evolution. An alternative way to calculate the active contour is the Level Set method \cite{368173}, \cite{Caselles1993}. We tested the level set method as discussed in \cite{kong2013autonomous} and found that this method has limited processing frame because of the partial differential calculation. In 2014, the morphological-based approach was designed to calculate the curve evolution \cite{Marquez-Neila2014} which balances the operation speed and accuracy. 
 
 As derived in \cite{Marquez-Neila2014}, the level set implementation is 
 \begin{align}
@@ -889,7 +889,7 @@ Fig.\ref{fig:chp04_17_predict_1} illustrates consecutive frames when the pitch a
 
 \section{Experiments and Discussion}
 \subsection{Experiments Setup}
-For a visible light camera, we selected DFK 23G445 which developed by Imaging Source GmbH shown in Fig. \ref{fig:CameraOnly}. Its resolution is 1280$\times$960 with RGB32 color model, and the camera has a maximum frame rate of $30\ fps$. We adopted the $100\ mm$ lens for both sides of the camera and the base line is $10\ m$ for all landing experiments.
+We selected DFK 23G445 camera as a visible light optical sensor, which developed by Imaging Source GmbH, as shown in Fig. \ref{fig:CameraOnly}. Its resolution is 1280$\times$960 and maximum frame rate is $30\ fps$. We adopted the $100\ mm$ camera lens for both sides and the base line is $10\ m$ for all landing experiments.
  
 %The ground station, which runs the tracking and localization algorithms, is mainly constituted by ADLINK EOS-1200 PC, which sends relative position and records GNSS data from UAV as ground truth.  This product is a rugged and compact system equipped with Intel Core i7 2.1 GHz processor and 8 GB DDR3. 
 
@@ -906,11 +906,12 @@ For a visible light camera, we selected DFK 23G445 which developed by Imaging So
 		\includegraphics[height=2.6cm]{Figs/PTU_D300E.pdf}
 		\label{fig:PTU_D300E}
 	}
-	\caption{(a) DFK 23G445 Camera (b) PTU-D300E}
+	\caption{(a) DFK 23G445 Camera (b) FLIR PTU-D300E}
 \end{figure}
-To extend the field of view, we adopted precision PTU to actuate the camera. PTU-D300E (see Fig. \ref{fig:PTU_D300E} is a high-performance product from FLIR. Its pan/tilt speeds up to $50\degree/second$ with the position resolution of $0.006\degree$. Moreover, it is a user programmable product integrating Ethernet and RS-232 interface. The real-time command interface supports advanced applications such as video tracking. We set up the camera on the top bracketing, and the assembled individual vision system is illustrated in Fig. \ref{fig:SystemStructure}. 
 
-This experimental test-bed is a customized fixed wing aircraft as shown in Fig. \ref{fig:Kaitudozhe_VIGA}, which is a gasoline-powered radio-controlled model aircraft. The on-board autopilot allowed for the aircraft to perform simple commanded maneuver. Our autopilot module is iFLY-F1A (Fig. \ref{fig:iFly_F1A} and the navigation module is iFLY-G2 (Fig. \ref{fig:iFly_G2} \cite{IFLY}, which is a small six-DOF (degree of freedom) navigation system. This module supports real-time 3D information including attitude angle, angular rate, position, speed, acceleration, true airspeed, calibrated airspeed. F1A is connected with G2 through RS-232 serial port. Table \ref{tab:platform_specifications} lists the other technical specifications of the UAV platform.
+The PTU type in our configuration is PTU-D300E form FLIR as shown in Fig.\ref{fig:PTU_D300E}. We mounted the camera on the top bracketing and the assembled unit is illustrated in Fig. \ref{fig:SystemStructure}. The maximum rotation speed of pan and titlt axis is $50\degree/second$ and the minimum position resolution is $0.006\degree$. Equipped with the Ethernet and RS-232 interface, we could configure the PTU in position control mode or velocity control mode to support the vision tracking assignment.
+
+Fig. \ref{fig:Kaitudozhe_VIGA} shows our experimental platform, which is a customized fixed wing aircraft. The on-board autopilot allowed for the aircraft to perform simple commanded maneuver. We choose iFLY-F1A (Fig. \ref{fig:iFly_F1A} as auto poilot and the navigation module is iFLY-G2 (Fig. \ref{fig:iFly_G2} \cite{IFLY}. This navigation module provides the real-time 3D information of the aircraft including speed, acceleration, true airspeed, attitude angle and angular rate. The technical specifications of the UAV platform as shown in Table \ref{tab:platform_specifications}.
 
 \begin{figure}[!tb]
 	\centering
@@ -921,21 +922,22 @@ This experimental test-bed is a customized fixed wing aircraft as shown in Fig. 
 	}	
 	\subfigure[]
 	{
-		\label{fig:iFly_F1A}
-		\includegraphics[height=3cm]{Figs/iFly_F1A.pdf}
+		\label{fig:iFly_G2}
+		\includegraphics[height=3cm]{Figs/iFly_G2.pdf}
 	}
 	\subfigure[]
 	{
-		\label{fig:iFly_G2}
-		\includegraphics[height=3cm]{Figs/iFly_G2.pdf}
-	}	
-	\caption{(a) The Pioneer fixed-wing platform (b) iFLY-F1A Module   (c) iFLY-G2 Module}
+		\label{fig:iFly_F1A}
+		\includegraphics[height=3cm]{Figs/iFly_F1A.pdf}
+	}
+	
+	\caption{(a) The Pioneer fixed-wing platform (b) iFLY-G2 (c)iFLY-F1A   }
 \end{figure}
 
 
 
 \begin{table}
-	\caption{The Technical Specifications of Pioneer}
+	\caption{The Technical Specifications}
 	\label{tab:platform_specifications}
 	\begin{center}
 		\renewcommand{\arraystretch}{1.1}
@@ -943,21 +945,18 @@ This experimental test-bed is a customized fixed wing aircraft as shown in Fig. 
 			\hline
 			\textbf {Items}  & \textbf{Description} \\
 			\hline
-			Vehicle mass & 9000 g \\
-			Maximum Payload mass & 5000 g \\
 			Diameter & 2900 mm \\
-			Flight duration & up to 180 minutes \\
+			Mass & 9000 g \\
+			Maximum Payload Mass & 5000 g \\
+			Flight duration & up to 180 minutes \\						
 			Cruising speed & 30.0 m/s \\
 			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-Communication is crucial in the landing guidance framework because the relative localization is broadcast through the radio. The guidance data are sent using an advanced radio modem that transmits and receives on the $900\ Mhz$ band. The XTend RF Modems support up to $22\ km$ outdoor communication with the interface data rates from $10\ bps$ to $230,00\ bps$, which is sufficient to transfer GNSS data and predicted position from a ground station to on-board navigation modem. 
-
-
-
-
+Communication is crucial in the landing guidance framework because the relative localization is broadcast through the radio. We choose $900\ Mhz$ band to transmit and receive gudiance data by an advanced radio modem. The XTend RF module provides a maximum $22\ km$ outdoor communication data link. The data rates of this modem is from $10\ bps$ to $230,00\ bps$ which meets the requirement of transferring the local position and DGPS data from the ground station to the on-board auto pilot. 
+ 
 \subsection{Tracking Algorithm Experiments}
 To compare with the standard TLD method, the stability of Semi-random Code method was estimated for each frame by means of running 1000 Monte-Carlo experiments in one landing image sequence. Table \ref{lab:TLD_params} lists the parameters for TLD and SRC-TLD and the result is shown as in Fig.\ref{fig:chp04_24_random_semi_random_monte_carlo}. The line shows the center location error for each algorithm and the continuously shaded area is the error region, which explicates that the SRC has better stability and the accuracy of center location is improved. 
 
@@ -1033,7 +1032,7 @@ Also, we compared SRC-TLD with Meanshift, AdaBoost and standard TLD methods unde
 \subsection{Field Experiments}
 \subsubsection{Scenarios}
 
-The landing procedure was divided into four sections: (1) The UAV takeoff from the runway. (2) Cruise near the landing area in a large range to test the control system. (3) Cruise near the landing area in a small range and after the UAV is locked by visual system and received the visual references, the UAV control system was using vision-based localization data and the GPS data was only recorded as the benchmark. (4) Safely landing back to the runway.
+The landing procedure was divided into four sections: (1) The UAV takes off autonomously. (2) Cruise above the target landing area in a large range to test the control system. (3) Reduce the height and approach to the searching area of the ground vision system. After locking the UAV by visual system, the autopilot received the vision-based references and the landing strategy was based on vision-based localization data. The GPS data was only recorded as the benchmark. (4) Safely landing back to the runway.
 
 
 
@@ -1042,7 +1041,7 @@ The landing procedure was divided into four sections: (1) The UAV takeoff from t
 
 
 \subsubsection{Real-flight Experiments}
-Based on the results of simulation, eight sets of experimental results are conduced to establish the feasibility of the proposed approach as shown in Tabel \ref{lab:eight_ground_landing}. In realistic application, it is very critical requirements that the lateral deviation error from the middle line of the runway and the lateral acceleration of the vehicle should be perfectly eliminated to minimize the damage of the vehicle. Fig.\ref{fig:sci02_landing_results_big} illustrate the approaching results. The left image shows the landing waypoints projecting on a satellite map where $A$ is the locking point of the ground landing and $B$ is the desired touch down point on the runway. In addition, the three 3D landing curves represent the calculated results from TLD, SRC-TLD and SRC-TLD with BBS methods. To compare with the ground truth, recording during the landing process by DGPS, the location errors of each axis are lists on the right side. In X and Z-axis, the location error decreases while the vehicle approaches the landing area. The error in Y-axis has larger error comparing with X and Z-axis, and the disturbance is significant.
+Based on the results of simulation, eight sets of experimental results are conduced to establish the feasibility of the proposed approach as shown in Tabel \ref{lab:eight_ground_landing}. In realistic application, it is very critical prerequisites that the lateral deviation error from the middle line of the runway and the lateral velocity of the aircraft should be carefully eliminated to minimize the danger of the landing maneuver. Fig.\ref{fig:sci02_landing_results_big} illustrate the approaching results. The left image shows the landing waypoints projecting on a satellite map where $A$ is the locking point of the ground landing and $B$ is the desired touch down point on the runway. In addition, the three 3D landing curves represent the calculated results from TLD, SRC-TLD and SRC-TLD with BBS methods. To compare with the ground truth, recording during the landing process by DGPS, the location errors of each axis are lists on the right side. In X and Z-axis, the location error decreases while the vehicle approaches the landing area. The error in Y-axis has larger error comparing with X and Z-axis, and the disturbance is significant.
 
 \begin{figure*}[!th]
 	\centering
@@ -1158,7 +1157,7 @@ As the theoretical and simulation result discussed, the localization errors in e
 \section{Conclusion}
 This paper presents a complete framework and develops corresponding kernel algorithms to deal with the ground-based stereo localization problem of UAVs. The stereo guidance system has potentials to enable flying aerial vehicles more autonomous and safe landing even in GNSS-denied scenarios. The proposed tracking-inspired detection algorithm contributes to remarkable advancements of real-time computation and accurate localization against our previous works. As the typical scenario experimental results show, the developed BBS operator makes a most compacted bounding box and improves the spatial localization accuracy with 11cm in average. 
 
-From the viewpoint of applications, this ground-based guidance system outperforms the onboard solutions in enormous computation capacity supporting and flexible configuration with baseline and sensors. Truth be told, the system has some pitfalls, such as the low accuracy at long distance in depth axis and not supporting the attitude measurement. Future work will focus on learning-driven architecture for better real-time features and elimination of inevitable error propagation through the fusion with other existing or inventing sensors, i.e. acoustic or radio.
+From the viewpoint of applications, this ground-based guidance system outperforms the onboard solutions in enormous computation capacity supporting and flexible configuration with baseline and sensors. Truth be told, this framework has some pitfalls, such as the low accuracy at long distance in depth axis and not supporting the attitude measurement. Future work will focus on learning-driven architecture for better real-time features and elimination of inevitable error propagation through the fusion with other existing or inventing sensors, i.e. acoustic or radio.
 
 
 %% For tables use
