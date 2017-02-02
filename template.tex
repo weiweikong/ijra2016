@@ -85,6 +85,7 @@
 \usepackage{subfigure} % by Kong
 \usepackage{amsmath} 
 \usepackage{url}
+\usepackage{amssymb}
 
 \usepackage[linesnumbered,ruled,algo2e]{algorithm2e} % for algorithms block by Weiwei
 
@@ -148,12 +149,12 @@ Orchestrating a safe landing is one of the greatest challenges for Unmanned Aeri
 \section{Introduction}
 \label{intro}
 %无人机大量应用
-Over the past few decades, the application of unmanned aircraft has increased enormously in both civil and military scenarios. Although aerial robots have successfully been implemented in several applications, there are still new research directions relate to them. Kumar et al. \cite{kumar2012opportunities} outlined the opportunities and challenges of this developing field, from the model design to high-level perception capability. All of these issues are concentrating on improving the degree of autonomy, which supports UAVs continue to be used in novel and surprising ways.
+Over the past few decades, the application of unmanned aircraft has increased enormously in both civil and military scenarios. Although aerial robots have successfully been implemented in several applications, there are still new research directions relate to them. Floreano \cite{floreano2015science} and Kumar et al. \cite{kushleyev2013towards} outlined the opportunities and challenges of this developing field, from the model design to high-level perception capability. All of these issues are concentrating on improving the degree of autonomy, which supports UAVs continue to be used in novel and surprising ways.
 % 自主降落能力至关重要
 No matter fixed-wing or rotor-way platforms, a standard fully unmanned autonomous system(UAS) involves performing takeoffs, waypoint flight and landings. Among them, landing maneuver is the most delicate and critical phase of UAV flights. Two technical reports \cite{manning2004role} argued that nearly 70\% mishaps of Pioneer UAVs encountered during landing process caused by human factors. So a proper assist system is needed to enhance the reliability of landing task. Generally, two main capabilities of the system are required. The first one is navigation and localization of UAVs, and the second one is generating the appropriate guidance command to guide UAVs for a safe landing. 
 
 % GNSS不行
-For manned aircraft, the traditional landing system adopts a radio beam directed upward to vehicle from the ground \cite{stevens2003aircraft}. By measuring the angular deviation from the beam through onboard equipment, the pilot knows the perpendicular displacement of the aircraft in the vertical channel. For the azimuth information, additional equipment is required. However, due to weight, volume and power constraints, it is impossible to equip these instruments in UAV. Thanks to the Global Navigation Satellite System(GNSS) technology, we have seen lots of successful practical applications of autonomous UAVs in outdoor circumstances such as transportation, aerial photography and intelligent farming. Unfortunately, in some environments, such as low altitude or urban operations, the receiver antenna failed to received the signal due to the limited line-of-sight with satellites and leads to unstable localization information \cite{farrell1998gps}. In unknown or GNSS-shaded environment, the autonomous landing of UAVs is still an open problem. 
+For manned aircraft, the traditional landing system adopts a radio beam directed upward to vehicle from the ground. By measuring the angular deviation from the beam through onboard equipment, the pilot knows the perpendicular displacement of the aircraft in the vertical channel. For the azimuth information, additional equipment is required. However, due to weight, volume and power constraints, it is impossible to equip these instruments in UAV. Thanks to the Global Navigation Satellite System(GNSS) technology, we have seen lots of successful practical applications of autonomous UAVs in outdoor circumstances such as transportation, aerial photography and intelligent farming. Unfortunately, in some environments, such as low altitude or urban operations, the receiver antenna failed to received the signal due to the limited line-of-sight with satellites and leads to unstable localization information \cite{farrell1998gps}. In unknown or GNSS-shaded environment, the autonomous landing of UAVs is still an open problem. 
 
 Visual based approach is an obvious way to achieve the autonomous landing by estimating flight speed and distance to the landing area, in a moment-to-moment fashion. Generally, two types of visual methods can be considered. The first type is the vision-based onboard system, which has been widely studied. The other is to guidance the aircraft using the ground-based camera system. Once the aircraft is detected by the camera during the landing process, its characteristics, such as type, location, heading and velocity, can be derived by the guidance system. Based on this information, the autopilot could align the vehicle carefully towards the landing area. By adapting its velocity and acceleration, the onboard vision system achieves a safely landing. In summary, two key elements of the landing problem are detecting the UAV and calculating the location of the UAV relative to the landing field. 
 
@@ -193,7 +194,7 @@ Motivated by these pressing problems, we introduce a novel ground-based visual l
 
 \subsection{On-board Vision Method}
 Accurate landing aided by ground vision guidance has been studied for unmanned flying rotor-crafts.
-Considering the model as an eye-in-hind configuration, a practical template-based visual servo control frame work has been proposed by Guenard \cite{Guenard2008}. By calculating the image error kinematics, a designed Lyapunov controller shows good performance and robustness of hovering a quadrotor UAV. 
+Considering the model as an eye-in-hind configuration, a practical template-based visual servo control frame work has been proposed by Guenard \cite{mahony2016modeling}. By calculating the image error kinematics, a designed Lyapunov controller shows good performance and robustness of hovering a quadrotor UAV. 
 
 %Mej{\'{\i}}as developed an image-based velocity references approach to visually control the altitude and lateral of the helicopter \cite{Mejias2006}. These vision velocity reference is combined with GPS and IMU data for more accurate and position measurements.
 
@@ -224,7 +225,7 @@ Our group first developed the traditional stereo ground-based system with infrar
 
 
 \section{System Architechture of Ground-based Stereo Localization}
-In this section, we illustrate the theoretical model of the ground localization framework. We first recap the traditional stereo vision model which has limited base line restraining the detection distance. To enlarge the system working boundary, we set up the camera and other sensor modules on the two separated PTU and then calculate the target according to the image information and rotation angle from PTU. Each vision module operates independently and delivering image processing results and rotation status of PTU to the ground station computer which measures local position of the UAV. Fig.\ref{fig:SystemStructure} shows the architecture of the ground-to-air stereo visual system.
+The theoretical model for the ground stereo-in-loop localization is reviewed and presented. We first recap the traditional stereo vision model which has limited base line restraining the detection distance. To enlarge the system working boundary, we set up the camera and other sensor modules on the two separated PTU and then calculate the target according to the image information and rotation angle from PTU. Each vision module operates independently and delivering image processing results and rotation status of PTU to the ground station computer which measures local position of the UAV. Correspondingly, the ground-based visual  localization system architecture is then shown in Fig. \ref{fig:SystemStructure}.
 %Since the ground station judging the switch from GNSS-aid method to vision-aid method, the auto pilot guided UAV based on the properly data received by XTend modem. 
 
 
@@ -310,7 +311,7 @@ where $b$ is the baseline and $d=u_l-u_r$ is the pixel disparity. The traditiona
 \subsection{Separate Stereo Vision System Configuration}
 In order to detect the target at long distance, the large base line, more than $5\ m $, is required. Benefiting the camera assembled on PTU separately, we could switch the baseline freely according to the expected detection distance and target size.
 
-For the world coordinate system, its origin is located on the rotation center of the left PTU. For the sake of simplicity, the optical sensor is mounted on the PTU in the way that the axes of the camera frame are parallel to those of PTU frame. So it can be assumed that the camera coordinate coincides with the PTU frame. 
+As for the global localization, the left PTU rotation center is regarded as the origin of the world inertial coordinate.  For the sake of simplicity, the optical sensor is mounted on the PTU in the way that the axes of the camera frame are parallel to those of PTU frame. So it can be assumed that the camera coordinate coincides with the PTU frame. 
 
 Fig. \ref{fig:TheoreticalModel} reveals the theoretical model of the optical stereo system. The principle point of left and right camera are defined as ${O_l}$ and ${O_r}$ respectively. So the base line of this system is $O_lO_r$ whose distance is ${D}$. By defining the UAV as a point $M$, ${O_lM}$ and ${O_rM}$ denote the connections between the camera frame and the aircraft. Also, ${\phi_l}$, ${\phi_r}$, ${\psi_l}$, ${\psi_r}$ present the pan and tilit status of PTU on each side. When the PTU is in initial state, we get ${\psi_l=0}$, $\phi_r=0$, $\phi_l= 0$ and ${\psi_r=0}$. In this state, the optical axis of each module are parallel the runway.  
  
@@ -322,16 +323,16 @@ Fig. \ref{fig:TheoreticalModel} reveals the theoretical model of the optical ste
 	\label{fig:TheoreticalModel}
 \end{figure}
 
-In practical application, the compensation of pixel deviation in horizontal and vertical direction has to be concerted, because the point $M$ is not always at the image plane center. Fig \ref{fig:Fig02_ImagePlaneOnly} shows the more practical geometry model and for left side, the pixel deviation compensation is calculated by
+In practical application, the compensation of pixel deviation in horizontal and vertical direction has to be concerted, because the point $M$ is not always at the image plane center. The focus is defined as $f$ and Fig. \ref{fig:Fig02_ImagePlaneOnly} shows the more practical geometry model and for left side, the pixel deviation compensation is calculated by
 \begin{equation} 
 	\left \{
 	\begin{split}
-		& \psi_{cl} = \arctan \frac{(u-u_0)du}{f} \\
-		& \phi_{cl} = \arctan \frac{(v-v_0)\cos\psi_{cl}dv}{f} 
+		& \psi_{cl} = \tan^{-1} \{ \frac{u-u_0}{f} \cdot du \} \\
+		& \phi_{cl} = \tan^{-1} \{ \frac{v-v_0}{f} \cos\psi_{cl} \cdot dv \} 
 	\end{split}
 	\right.
 \end{equation}
-where $du$ and $dv$ are the length of the $u$- and $v$-axis in image plane, optical point is $o(u_o,v_o)$ and $f$ is the focus. Redefine the current pan and tilt angle by $\phi_{pl}$ and $\psi_{pl}$, which can be obtained through the serial ports from the PTU directly. Then, the total composition pan and tilt angle is given by
+where $du$ and $dv$ are the length of the $u$- and $v$-axis in image plane, optical point is $o(u_o,v_o)$. Redefine the current pan and tilt angle by $\phi_{pl}$ and $\psi_{pl}$, which can be obtained through the serial ports from the PTU directly. Then, the total composition pan and tilt angle is given by
 \begin{equation} 
 	\left \{
 	\begin{split}
@@ -774,7 +775,7 @@ Pair pixels comparison is one handy method to extract the target feature. In ens
 \end{align}
 where $I(\mathbf{p}_i)$ and $I(\mathbf{q}_i)$ is the gray scale of pixel at position $\mathbf{p}_i$  and $\mathbf{p}_i$ in image plane. Fig.\ref{fig:01_TLD_Code} shows an calculation instance of a five-pair feature for a single fern. For standard random pairs method, the algorithm randomly selects five diverse locations and implement the pixel comparison. So we could get the binary code, 10011, which in decimal form is $F=19$, as the feature of the current region. Combing with the other training data set, we could get a probability finally.
 
-However, the standard fully random comparison is only proper for the target which filled the small patch, such as in facial detection case. The randomness retrieves the appearance of the object and adapts the deviation in the TLD framework. In fixed-wing UAV tracking situation, the UAV only takes the small area of the whole Region of Interest (ROI). The nose-section of the UAV projected on the image plane is larger than other sections of the air frame. When the distance between the aircraft and landing area is far, its wings seems to be a single line. So the general randomness failed to extract the kernel feature of the fixed-wing UAV occasionally. To achieve more stable representation, we set one pixel of each pair with limited randomness by constraining the selection region. The picture on the bottom left of Fig. \ref{fig:01_TLD_Code} shows this region with yellow shade. The other pixels were selected randomly in the rest part of the specific rectangle. We named this process Semi-random Coding (SRC). 
+However, the standard fully random comparison is only proper for the target which filled the small patch, such as in facial detection case. The randomness retrieves the appearance of the object and adapts the deviation in the TLD framework. In fixed-wing UAV tracking situation, the UAV only takes the small area of the whole Region of Interest (ROI). The nose-section of the UAV projected on the image plane is larger than other sections of the air frame. As for the practical scenarios, the dual wings of the fixed-wing UAV almost seem to be a single line in the captured images, when the distance between the aircraft and the landing point is great, e.g. 600 meters. Under such circumstances, the general randomness failed to find out the aircraft's ROI accurately. Therefore, an approach of extending a limited interval to enclose the selection region is proposed and employed. The picture on the bottom left of Fig. \ref{fig:01_TLD_Code} shows this region with yellow shade. The other pixels were selected randomly in the rest part of the specific rectangle. We named this process Semi-random Coding (SRC). 
 
 \begin{figure}[!th]
 	\centering
@@ -794,9 +795,17 @@ In order to enhance the localization accuracy, we need to detect the center of a
 \end{figure}
 Active contour is regarded as an autonomous approach to deal with various feature extraction by using texture coherence during the contour evolution. An alternative way to calculate the active contour is the Level Set method \cite{Caselles1993}. We tested the level set method as discussed in \cite{kong2013autonomous} and found that this method has limited processing frame because of the partial differential calculation. In 2014, the morphological-based approach was designed to calculate the curve evolution \cite{Marquez-Neila2014} which balances the operation speed and accuracy. 
 
-As derived in \cite{Marquez-Neila2014}, the level set implementation is 
+As derived in \cite{Marquez-Neila2014}, we set the level set function as $u(x, y, z, t)$ and its gradient as
 \begin{align}
-	\frac{\partial u}{\partial t} = g(I)|\nabla u|\nu +g(I) |\nabla u|\text{div}(\frac{\nabla u}{|\nabla u|}) + \nabla g(I) \nabla u
+u_{\nabla} \triangleq \nabla u(x, y, z, t)
+\end{align}
+and furthermore
+\begin{align}
+c \triangleq |\nabla u(x, y, z, t)|
+\end{align}
+So the level set implementation is 
+\begin{align}
+	\frac{\partial u}{\partial t} = cg(I)\nu +cg(I)\text{div}(\frac{u_{\nabla}}{c}) + \nabla g(I) u_{\nabla}
 \end{align}
 where $g(I)$ is the function to select the interesting part of the image; $u$ is the level set function and $\nu$ is the parameters. This equation involved three components: The first item is \textit{Balloon Force}, which makes the curve has the limited shrink velocity; the second item is \textit{Image Attraction Force} that is the feature-based principal contract force; \textit{Smoothing Force} flats segments where has high curvature, and this force is denoted as the third item.
 
@@ -813,8 +822,8 @@ Instead of solving PDE function directly, we could adopt a morphological approac
 \begin{align}
 	\label{eq:PDE_2_3}
 	u^{n+\frac{2}{3}}(\mathbf{x})=\left\{ \begin{array}{ll}
-		1 &\mbox{ if $\nabla u^{n+\frac{1}{3}}(\mathbf{x}) \cdot \nabla g(I)(\mathbf{x}) > 0$} \\
-		0&\mbox{ if $\nabla u^{n+\frac{1}{3}}(\mathbf{x}) \cdot \nabla g(I)(\mathbf{x}) < 0$} \\
+		1 &\mbox{ if $\nabla u^{n+\frac{1}{3}}(\mathbf{x}) \cdot g_{\nabla} > 0$} \\
+		0&\mbox{ if $\nabla u^{n+\frac{1}{3}}(\mathbf{x})  \cdot g_{\nabla}  < 0$} \\
 		u^{n+\frac{1}{3}}(\mathbf{x}) &\mbox{otherwise}
 	\end{array} \right.
 \end{align}
@@ -823,7 +832,7 @@ Instead of solving PDE function directly, we could adopt a morphological approac
 	\label{eq:PDE_3_3}
 	u^{n+1} (\mathbf{x}) = (((SI_h) \circ (IS_h)) u^{n+\frac{2}{3}})(\mathbf{x})
 \end{align}
-where the $(D_du^n)(\mathbf{x})$ and $(E_du^n)(\mathbf{x})$ are dilation and erosion operator; $n$ is the curve evolution step. As the Eq.\ref{eq:PDE_1_3}, Eq.\ref{eq:PDE_2_3} and Eq.\ref{eq:PDE_3_3} illustrated, we divided the PDE calculation into three separated morphological steps. The SRC-TLD and BBS-based algorithm framework are shown in Alg.\ref{alg:active_contour}.
+where the $(D_du^n)(\mathbf{x})$ and $(E_du^n)(\mathbf{x})$ are dilation and erosion operator; $n$ is the curve evolution step and the gradient is defined as $ g_{\nabla} \triangleq \nabla g(I)(\mathbf{x})$. As the Eq.\ref{eq:PDE_1_3}, Eq.\ref{eq:PDE_2_3} and Eq.\ref{eq:PDE_3_3} illustrated, we divided the PDE calculation into three separated morphological steps. The SRC-TLD and BBS-based algorithm framework are shown in Alg.\ref{alg:active_contour}.
 
 
 \begin{algorithm2e}[ht]
@@ -877,7 +886,7 @@ Because the minimum PTU rotation angle is $0.006 \degree$, we could approximate 
 	x_{t} = f\frac{x_{t-1} - f\psi }{x_{t-1}  \psi  - \phi y_{t-1} + f} \\
 	y_{t} = f\frac{y_{t-1} -f\phi}{  x_{t-1} \psi - \phi y_{t-1} + f}
 \end{align}
-Fig.\ref{fig:chp04_17_predict_1} illustrates consecutive frames when the pitch angle jumped during the landing process. The figure on the left side is the $138\ th$ frame. Based on the changing pattern of UAV, without the PTU rotation status, we could get the predicted center based on the original method as shown in a yellow dot on the right side of the figure. The blue dot on the same figure shows the proposed prediction method result. It is obvious that the blue dot position is much near to the green one which is the ground truth target center.
+Fig.\ref{fig:chp04_17_predict_1} illustrates consecutive frames when the pitch angle jumped at the moment from the 138th to 139th frames during the flight experiment. Based on the changing pattern of UAV, without the PTU rotation status, a mistaken selection region is predicted by the original approach, shown as the yellow dot in Fig. \ref{fig:chp04_17_predict_1}. The blue dot on the same figure shows the proposed prediction method result. It is obvious that the blue dot position is much near to the green one which is the ground truth target center.
 
 \begin{figure}[!th]
 	\centering
@@ -909,7 +918,7 @@ We selected DFK 23G445 camera as a visible light optical sensor as shown in Fig.
 	\caption{(a) DFK 23G445 Camera (b) FLIR PTU-D300E}
 \end{figure}
 
-The PTU type in our configuration is PTU-D300E form FLIR as shown in Fig.\ref{fig:PTU_D300E}. We mounted the camera on the top bracketing and the assembled unit is illustrated in Fig. \ref{fig:SystemStructure}. The maximum rotation speed of pan and titlt axis is $50\degree/second$ and the minimum position resolution is $0.006\degree$. Equipped with the Ethernet and RS-232 interface, we could configure the PTU in position control mode or velocity control mode to support the vision tracking assignment.
+The PTU type in our configuration is PTU-D300E form FLIR as shown in Fig.\ref{fig:PTU_D300E}. In terms of the system architecture in Fig. \ref{fig:SystemStructure}, the dual cameras are separately mounted on Pan-and-Tilt units. The maximum rotation speed of pan and titlt axis is $50\degree/second$ and the minimum position resolution is $0.006\degree$. Equipped with the Ethernet and RS-232 interface, we could configure the PTU in position control mode or velocity control mode to support the vision tracking assignment.
 
 Fig. \ref{fig:Kaitudozhe_VIGA} shows our experimental platform, which is a customized fixed wing aircraft. The on-board autopilot allowed for the aircraft to perform simple commanded maneuver. We choose iFLY-F1A (Fig. \ref{fig:iFly_F1A} as auto poilot and the navigation module is iFLY-G2 (Fig. \ref{fig:iFly_G2}. This navigation module provides the real-time 3D information of the aircraft including speed, acceleration, true airspeed, attitude angle and angular rate. The technical specifications of the UAV platform as shown in Table \ref{tab:platform_specifications}.
 
@@ -957,7 +966,7 @@ Fig. \ref{fig:Kaitudozhe_VIGA} shows our experimental platform, which is a custo
 Communication is crucial in the landing guidance framework because the relative localization is broadcast through the radio. We choose $900\ Mhz$ band to transmit and receive gudiance data by an advanced radio modem. The XTend RF module provides a maximum $22\ km$ outdoor communication data link. The data rates of this modem is from $10\ bps$ to $230,00\ bps$ which meets the requirement of transferring the local position and DGPS data from the ground station to the on-board auto pilot. 
  
 \subsection{Tracking Algorithm Experiments}
-To compare with the standard TLD method, the stability of Semi-random Code method was estimated for each frame by means of running 1000 Monte-Carlo experiments in one landing image sequence. Table \ref{lab:TLD_params} lists the parameters for TLD and SRC-TLD and the result is shown as in Fig.\ref{fig:chp04_24_random_semi_random_monte_carlo}. The line shows the center location error for each algorithm and the continuously shaded area is the error region, which explicates that the SRC has better stability and the accuracy of center location is improved. 
+To compare with the standard TLD method, the stability of Semi-random Code method was estimated for each frame by means of running 1000 Monte-Carlo experiments in one landing image sequence. Table \ref{lab:TLD_params} lists the parameters for TLD and SRC-TLD and Fig.\ref{fig:chp04_24_random_semi_random_monte_carlo} presents the corresponding results as well. Both the orange and blue curves demonstrate the ROI center detection errors, while the continuously shaded area denotes the bias. The results described that the center location error for each algorithm and the continuously shaded area is the error region, which explicates that the SRC has better stability and the accuracy of center location is effectively improved to some extent. 
 
 \begin{table}[!th]
 	\centering
@@ -1031,7 +1040,7 @@ Also, we compared SRC-TLD with Meanshift, AdaBoost and standard TLD methods unde
 \subsection{Field Experiments}
 \subsubsection{Scenarios}
 
-The landing procedure was divided into four sections: (1) The UAV takes off autonomously. (2) Cruise above the target landing area in a large range to test the control system. (3) Reduce the height and approach to the searching area of the ground vision system. After locking the UAV by visual system, the autopilot received the vision-based references and the landing strategy was based on vision-based localization data. The GPS data was only recorded as the benchmark. (4) Safely landing back to the runway.
+The landing procedure was divided into four sections. (1) The UAV takes off autonomously. (2) The flying aircraft cruises following the specified trajectory points. (3) The on-board autopilot and navigator enables the fixed-wing aircraft into the defined searching window of the ground stereo system. (4) Once the aircraft is detected by the visual system, the autopilot receives the vision-based localization data, unless safe landing on the runway is done. The GPS data was only recorded as the benchmark.
 
 
 
@@ -1040,7 +1049,7 @@ The landing procedure was divided into four sections: (1) The UAV takes off auto
 
 
 \subsubsection{Real-flight Experiments}
-Based on the results of simulation, results of eight sets of experiments are conduced to establish the feasibility of the proposed approach as shown in Tabel \ref{lab:eight_ground_landing}. In realistic application, it is very critical prerequisites that the error of lateral deviationfrom the middle line of the runway and the lateral velocity of the aircraft should be carefully eliminated to minimize the danger of the landing maneuver. Fig.\ref{fig:sci02_landing_results_big} illustrate the approaching results. The left image shows the landing waypoints projecting on a satellite map where $A$ is the locking point of the ground landing and $B$ is the desired touch down point on the runway. In addition, the three 3D landing curves represent the calculated results from TLD, SRC-TLD and SRC-TLD with BBS methods. To compare with the ground truth, recording during the landing process by DGPS, the location errors of each axis are lists on the right side. In X and Z-axis, the location error decreases while the vehicle approaches the landing area. The error in Y-axis has larger error comparing with X and Z-axis, and the disturbance is significant.
+In the outdoor experiments, eight sets of flights are conducted within different weather conditions. The results are presented in Tabel \ref{lab:eight_ground_landing}. In practical applications, it is very critical prerequisites that the error of lateral deviationfrom the middle line of the runway and the lateral velocity of the aircraft should be carefully eliminated to minimize the danger of the landing maneuver. Fig.\ref{fig:sci02_landing_results_big} illustrate the approaching results. The left image shows the landing waypoints projecting on a satellite map where $A$ is the locking point of the ground landing and $B$ is the desired touch down point on the runway. In addition, the three 3D landing curves represent the calculated results from TLD, SRC-TLD and SRC-TLD with BBS methods. To compare with the ground truth, recording during the landing process by DGPS, the location errors of each axis are lists on the right side. In X and Z-axis, the location error decreases while the vehicle approaches the landing area. The error in Y-axis has larger error comparing with X and Z-axis, and the disturbance is significant.
 
 \begin{figure*}[!th]
 	\centering
@@ -1074,11 +1083,11 @@ As the theoretical and simulation result discussed, the localization errors in e
 
 \begin{table*}[!th]
 	\centering
-	\caption{Guidance Error in Each Axes at Separated Interval with SRC-TLD and BBS Algorithms}
+	\caption{Guidance Error in Each Axes at Separated Interval with SRC-TLD and BBS Algorithms (Unit: m)}
 	\label{lab:ground_landing}
 	\begin{tabular}{cccc|cccc}
 		\hline
-		\textbf{Interval(m)} & \textbf{$\mathbf{i}^{O,c}$(m)} & \textbf{$\mathbf{j}^{O,c}$(m)} & \textbf{$\mathbf{k}^{O,c}$(m)} & \textbf{Interval(m)} & \textbf{$\mathbf{i}^{O,c}$(m)} & \textbf{$\mathbf{j}^{O,c}$(m)} & \textbf{$\mathbf{k}^{O,c}$(m)} \\ \hline
+		\textbf{Interval} & \textbf{$\mathbf{i}^{O,c}$} & \textbf{$\mathbf{j}^{O,c}$} & \textbf{$\mathbf{k}^{O,c}$} & \textbf{Interval} & \textbf{$\mathbf{i}^{O,c}$} & \textbf{$\mathbf{j}^{O,c}$} & \textbf{$\mathbf{k}^{O,c}$} \\ \hline
 		\textbf{600$\sim$580} & 0.332 & 1.856 & 0.431 & \textbf{300$\sim$280} & 0.128 & 1.426 & 0.171 \\
 		\textbf{580$\sim$560} & 0.311 & 1.434 & 0.371 & \textbf{280$\sim$260} & 0.123 & 1.313 & 0.159 \\
 		\textbf{560$\sim$540} & 0.208 & 1.542 & 0.300 & \textbf{260$\sim$240} & 0.104 & 1.104 & 0.114 \\
